@@ -1,3 +1,10 @@
+/*-----------------*/
+/*FUENTES*/
+/*-----------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+
 /*------------------------------*/
 /*R E S E T*/
 /*------------------------------*/
@@ -55,11 +62,7 @@ body, html{
 }
 
 
-/*-----------------*/
-/*FUENTES*/
-/*-----------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 /*-----------------*/
 /*VARIABLES*/
 /*-----------------*/
