@@ -23,6 +23,7 @@
             align-items: center;
             display: flex;
             justify-content: center;
+            color: #000;
       }
       div.colors div div{
         height: 70px;
@@ -79,7 +80,7 @@
       }
       div.black{
         background-color: black;
-        color: aliceblue;
+        color: aliceblue!important;
       }
       div.silver{
         background-color: silver;
@@ -100,7 +101,7 @@
     <main>
         <header>
             <h1>11-colors</h1>
-            <h2>Basci structure of document HTML 5</h2>
+            <h2>Are specified using predefined color names, or RGB, HEX, HSL.</h2>
         </header>
         <section>
             <h3>Name Colors</h3>
@@ -109,7 +110,7 @@
                     <div class="marron">marron</div>
                     <div class="red">red</div>
                     <div class="orange">orange</div>
-                    <div class="yelllow">yellow</div>
+                    <div class="yellow">yellow</div>
                     <div class="olive">olive</div>
                 </div>
                 <div>
@@ -137,7 +138,7 @@
                     <div class="marron">(128,0,0)</div>
                     <div class="red">(255,0,0)</div>
                     <div class="orange">(255,165,0)</div>
-                    <div class="yelllow">(255,255,0)</div>
+                    <div class="yellow">(255,255,0)</div>
                     <div class="olive">(128,128,0)</div>
                 </div>
                 <div>
@@ -160,7 +161,61 @@
                 </div>
             </div>
             <h3>RGB Hexadecimal:</h3>
+            <div class="colors">
+              <div>
+                  <div class="marron">#800000</div>
+                  <div class="red">#ff0000</div>
+                  <div class="orange">#ffa500</div>
+                  <div class="yellow">#ffff00</div>
+                  <div class="olive">#808000</div>
+              </div>
+              <div>
+                  <div class="purple">#800080</div>
+                  <div class="fuchsia">#ff00ff</div>
+                  <div class="white">#ffffff</div>
+                  <div class="line">#00ff00</div>
+                  <div class="green">#008000</div>
+              </div>
+              <div>
+                  <div class="navy">#000080</div>
+                  <div class="blue">#0000ff</div>
+                  <div class="aqua">#00ffff</div>
+                  <div class="teal">#008080</div>
+              </div>
+              <div>
+                  <div class="black">#000000</div>
+                  <div class="silver">#c0c0c0</div>
+                  <div class="gray">#808080</div>
+              </div>
+          </div>
             <h3>HSL: </h3>
+            <div class="colors">
+              <div>
+                  <div class="marron">hsl(0,100%,25%)</div>
+                  <div class="red">hsl(0,100%,50%)</div>
+                  <div class="orange">hsl(30,100%,50%)</div>
+                  <div class="yellow">hsl(60,100%,50%)</div>
+                  <div class="olive">hsl(120,100%,25%)</div>
+              </div>
+              <div>
+                  <div class="purple">hsl(300,100%,25%)</div>
+                  <div class="fuchsia">hsl(300,100%,50%)</div>
+                  <div class="white">hsl(0,100%,100%)</div>
+                  <div class="line">hsl(120,100%,50%)</div>
+                  <div class="green">hsl(120,100%,25%)</div>
+              </div>
+              <div>
+                  <div class="navy">hsl(240,100%,25%)</div>
+                  <div class="blue">hsl(240,100%,50%)</div>
+                  <div class="aqua">hsl(180,100%,50%)</div>
+                  <div class="teal">hsl(180,100%,25%)</div>
+              </div>
+              <div>
+                  <div class="black">hsl(0,100%,0%)</div>
+                  <div class="silver">hsl(0,0%,75%)</div>
+                  <div class="gray">hsl(0,0%,50%)</div>
+              </div>
+          </div>
         </section>
     </main>
 </body>
