@@ -149,16 +149,23 @@
                 background: url(../images/spriteweb.png);
                 background-position: 300px -430px;
                 width: 300px;
-                height: 170px;
+                height: 300px;
                 display: flex;
                 margin-left: 300px;
             }
             menu{
-                margin-left: 110px;
-                margin-top: 5px;
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+                margin-top: 1px;
+                margin-right: 20px;
+                
+                
+                   
                 
             }
             menu a:is(:link, :visited) {
+            border-bottom: 4px  #fff solid ;
             color: rgb(0, 0, 0);
             background-color: rgb(255, 255, 255);
             padding: 1rem;
@@ -167,8 +174,8 @@
             text-align: center;
             transition: all 0.5s ease-in;
             width: 120px;
-            margin-left: 3px;
-            margin-right: 3px;
+            
+            
             
         }
             menu a:is(:hover) { 
@@ -193,13 +200,13 @@
         <section>
             <div class="images">
                 <span class="span1">
-                    <span class="span2">Sprite 01</span>
+                    <span class="span2"><b>Sprite 01 </b></span>
                 </span>
                 <span class="span1">
-                    <span class="span2">Sprite 02</span>
+                    <span class="span2"><b>Sprite 02 </b></span>
                 </span>
                 <span class="span1">
-                    <span class="span2">Sprite 03</span>
+                    <span class="span2"><b>Sprite 03 </b></span>
                 </span>
             </div>
 
