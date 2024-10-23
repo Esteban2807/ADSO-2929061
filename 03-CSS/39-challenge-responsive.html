@@ -1,0 +1,315 @@
+<!-- /* BreakPoint: 1024px */
+@media (max-width: 1024px) {
+  body {
+    background-color: #f00;
+  }
+} 
+
+/* BreakPoint: 768px */
+@media (max-width: 768px) {
+  body {
+    background-color: #0f0;
+  }
+} 
+
+/* BreakPoint: 480px */
+@media (max-width: 480px) {
+  body {
+    background-color: #00f;
+  }
+}  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39-challenge-responsive</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #000000, #241a0c);
+            padding: 50px;
+
+        }
+
+        main {
+            background-color: #fff;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        div.logo {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+        }
+
+        div.personajes {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+            background-color: #eee;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+
+            div.two{
+                display: flex;
+                flex-direction: row;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+
+            div.freddy:hover span {
+                height: 30px;
+                transition: all ease-in 0.4s;
+            }
+
+            div.chica:hover span {
+                height: 30px;
+                transition: all ease-in 0.4s;
+            }
+            div.bonnie:hover span {
+                height: 30px;
+                transition: all ease-in 0.4s;
+            }
+            div.puppet:hover span {
+                height: 30px;
+                transition: all ease-in 0.4s;
+            }
+
+            div.freddy {
+                height: 171px;
+                width: 171px;
+                background: url(images/freddy.png);
+                display: flex;
+                flex-direction: row;
+                position: relative;
+                background-size: cover;
+
+                span {
+                    height: 20px;
+                    width: 171px;
+                    position: absolute;
+                    bottom: 0;
+                    background: #000000;
+                    color: beige;
+                    text-align: center;
+
+                }
+            }
+
+            div.chica {
+                height: 171px;
+                width: 171px;
+                background: url(images/chica.png);
+                display: flex;
+                position: relative;
+                background-size: cover;
+
+                span {
+                    height: 20px;
+                    width: 171px;
+                    position: absolute;
+                    bottom: 0;
+                    background: #000000;
+                    color: beige;
+                    text-align: center;
+
+                }
+            }
+
+            div.bonnie {
+                height: 171px;
+                width: 171px;
+                background: url(images/bonnie.png);
+                display: flex;
+                position: relative;
+                background-size: cover;
+                background-position: 20px -30px;
+
+                span {
+                    height: 20px;
+                    width: 171px;
+                    position: absolute;
+                    bottom: 0;
+                    background: #000000;
+                    color: beige;
+                    text-align: center;
+
+                }
+            }
+
+            div.puppet {
+                height: 171px;
+                width: 171px;
+                background: url(images/puppet.png);
+                display: flex;
+                position: relative;
+                background-size: cover;
+
+                span {
+                    height: 20px;
+                    width: 171px;
+                    position: absolute;
+                    bottom: 0;
+                    background: #000000;
+                    color: beige;
+                    text-align: center;
+
+                }
+            }
+
+       }
+
+       div.all{
+            
+            padding-top: 30px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            padding-bottom: 30px;
+       
+            div.text{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        scroll-behavior: smooth;
+
+        img{
+            width: calc(914px-400px);
+            height: auto;
+        }
+
+        div.ci{
+            width: 510px;
+            display: flex;
+            flex-direction: column;
+        }
+
+       }
+    }
+
+        @media (max-width: 768px) {
+            div.logo {
+                img {
+                    width: 450px;
+
+                }
+            }
+            div.all{
+            
+            
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            padding-bottom: 30px;
+       
+            div.text{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        scroll-behavior: smooth;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        img{
+            width: auto;
+            height: auto;
+        }
+
+        div.ci{
+            width: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+       }
+    }
+        }
+
+        @media (max-width: 576px) {
+            div.logo {
+                img {
+                    width: 250px;
+
+                }
+            }
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="logo"> <img src="images/Logo.png" alt="Logo fnaf2"> </div>
+
+        <div class="personajes">
+            <div class="two">
+                <div class="freddy personaje">
+                    <span>Freddy</span>
+                </div>
+                <div class="chica personaje">
+                    <span>Chica</span>
+                </div>
+            </div>
+            <div class="two">
+                <div class="bonnie personaje">
+                    <span>Bonnie</span>
+                </div>
+                <div class="puppet personaje">
+                    <span>Puppet</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="all">
+            <div class="text">
+                <img src="images/descarga.jpeg" alt="">
+                <div class="ci">
+                    <h3>Five Night at Freddy's</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsa a vitae officia
+                        mollitia. Culpa, dolor. Et reiciendis similique quas voluptas enim neque eius. Ipsum voluptas
+                        nam repellendus praesentium molestiae.
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt in deserunt laborum ad. Ipsa similique adipisci, corrupti modi sit, quibusdam harum, fuga dolorem doloremque est alias impedit dolor. Veniam, ut.</p>
+                </div>
+            </div>
+
+            <div class="text">
+                <img src="images/descarga.jpeg" alt="">
+                <div class="ci">
+                    <h3>Five Night at Freddy's</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ipsa a vitae officia
+                        mollitia. Culpa, dolor. Et reiciendis similique quas voluptas enim neque eius. Ipsum voluptas
+                        nam repellendus praesentium molestiae.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum iure non in numquam enim provident quibusdam quis soluta libero odio adipisci iste corrupti deleniti iusto, impedit magnam voluptate praesentium similique.</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+</body>
+
+</html>
