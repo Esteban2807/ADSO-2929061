@@ -11,7 +11,21 @@
   place-items: center;
   min-height: 100dvh
 }
-div {
+
+div.dos{
+    display: grid;
+  place-items: center;
+  margin: 2rem auto;
+    grid-template-areas: 
+      "img07 img08 img09"
+      "img10 img08 img11"
+      "img12 img12 img13";
+
+      width: calc(140px * 3);
+      height: cacl(140px * 3);
+      gap: 8px;
+}
+div.uno {
   display: grid;
   place-items: center;
 /*   
@@ -19,6 +33,7 @@ div {
   grid-template-rows: repeat(3, 140px);
   */
   grid-template-areas: 
+      
       "img01 img01 img04 img06"
       "img01 img01 img05 img05"
       "img02 img03 img05 img05";
@@ -28,7 +43,7 @@ div {
   gap: 8px;
 }
 
-main img {
+div img {
   border-radius: 4px;
   outline: solid #000;
   object-fit: cover;
@@ -58,6 +73,31 @@ img.img06 {
   width: calc(140px *2 + 8px);
   height: calc(140px *2 + 8px);
 }
+img.img08 {
+    grid-area: img07;
+}
+div.dos img.img09{
+    grid-area: img08;
+    height: calc(140px * 2 + 8px);
+}
+
+img.img10{
+    grid-area: img09;
+}
+img.img11{
+    grid-area: img10;
+}
+img.img12{
+    grid-area: img11;
+}
+
+div.dos img.img13{
+    grid-area:img12;
+    width: calc(140px * 2 + 8px)
+}
+img.img14{
+    grid-area: img13;
+}
     </style>
 </head>
 
@@ -70,7 +110,16 @@ img.img06 {
                     d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
             </svg></a>
     </nav>
-    <div>
+    <div class="dos">
+        <img src="images/grid/ani01.png" class="img08">
+        <img src="images/grid/death.jpeg" class="img09">
+        <img src="images/grid/spy x family.jpeg" class="img10">
+        <img src="images/grid/record of ragnarok.jpeg" class="img11">
+        <img src="images/grid/tokyo.jpeg" class="img12">
+        <img src="images/grid/dragon ball.jpeg" class="img13">
+        <img src="images/grid/lost canvas.jpeg" class="img14">
+    </div>
+    <div class="uno">
         <img src="images/grid/ani01.png" class="img01">
         <img src="images/grid/death.jpeg" class="img02">
         <img src="images/grid/spy x family.jpeg" class="img03">
