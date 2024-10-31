@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>07- JavaScript</title>
     <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body class="pug">
@@ -13,10 +13,23 @@
         </svg></a></nav>
     <main> 
       <header> 
-        <h1>00-Template</h1>
-        <p>parrafo </p>
+        <h1> 07- JavaScript</h1>
+        <h2>Covers how to add JavaScript functionality within a Pug file.</h2>
       </header>
-      <section> </section>
+      <section> 
+        <h2 class="msg"></h2>
+      </section>
+      <script>
+        let msg = document.querySelector('.msg')
+        let name = prompt("What is your name?")
+        if(name) {
+            msg.textContent = "Welcome " + name 
+        
+        }
+        else{
+            msg.textContent= "Welcome Guest"
+        }
+      </script>
     </main>
   </body>
 </html>
