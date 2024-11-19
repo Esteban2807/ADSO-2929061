@@ -34,6 +34,11 @@
     color: #fff;
     width: 200px;
     text-align: center;
+    transition: all ease-in 0.4s;
+  }
+  li:hover {
+    background-color: #999;
+    border: solid #fff 2px;
   }
   a {
     color: #fff;
