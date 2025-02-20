@@ -1,0 +1,33 @@
+body{
+    font-family: Jomhuria;
+}
+nav.navbar.bg-custom{
+    background-color: #204816;
+
+    a.nav-link{
+        color: #fff;
+    }
+}
+/* Hero Section */
+div.hero.row{
+    
+    div.col:nth-child(1){
+        height: 680px;
+        background-color: #2048169a;
+        h2,h3,p{
+            color:#fff
+        }
+        p.text-justify{
+            text-align: justify;
+        }
+        a.btn{
+            background-color: #15320E;
+            color: #fff;
+        }
+    }
+    div.col:nth-child(2){
+        height: 680px;
+        background-color: #fff;
+        background: url(../06-challenge/images/Yo\ barbao.png);
+    }
+}
