@@ -28,6 +28,156 @@ div.hero.row{
     div.col:nth-child(2){
         height: 680px;
         background-color: #fff;
-        background: url(../06-challenge/images/Yo\ barbao.png);
+        background: url(../06-challenge/images/Yo\ barbao.png) no-repeat;
+    }
+}
+
+/* Hero2 Section */
+
+div.hero2.row{
+    
+    div.col:nth-child(2){
+        height: 680px;
+        background-color: #204816bd;
+        padding: 5rem;
+        h2,h3,p{
+            color:#fff
+        }
+        p.text-justify{
+            text-align: justify;
+        }
+        div.graphics{
+            width: 100%;
+            gap: 1.5rem;
+            div.barra1{
+                width: 100%;
+                height: 15px;
+                border-radius: 15px;
+                div.barra{
+                    width: 50%;
+                    height: 15px;
+                    border-radius: 15px;
+                    background-color: #00FF00;
+                }
+            }
+            div.barra2{
+                width: 100%;
+                height: 15px;
+                border-radius: 15px;
+                div.barra{
+                    width: 65%;
+                    height: 15px;
+                    border-radius: 15px;
+                    background-color: #00FF00;
+                }
+            }
+            div.barra3{
+                width: 100%;
+                height: 15px;
+                border-radius: 15px;
+                div.barra{
+                    width: 30%;
+                    height: 15px;
+                    border-radius: 15px;
+                    background-color: #00FF00;
+                }
+            }
+        }
+        
+        
+        
+    }
+    div.col:nth-child(1){
+        height: 680px;
+        background: url(../06-challenge/images/yo\ para\ figma\ 1.png) #204018de no-repeat;
+    }
+}
+/* Servicios */
+div.services{
+    background-color: #204816e5;
+    div{
+        h2{
+            font-size: 3rem;
+        }
+        h3{
+            font-size: 2rem;
+        }
+        gap: 2rem;
+        div.flex-wrap.d-flex.flex-row.justify-content-center{
+            margin-bottom: 30px;
+            div.card{
+                width: 300px;
+                height: 210px;
+                border: #15320E solid 2px;
+                gap: 0.8rem;
+                h4{
+                    color: #204816;
+                }
+                p{
+                    color: #204816dc;
+                }
+                img{
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
+        
+    }
+}
+
+div.portfolio{
+    
+        h2{
+            font-size: 3rem;
+            margin-left: 50px;
+            color: #204816;
+        }
+        h3{
+            font-size: 2rem;
+            margin-left: 50px;
+            color: #15320ebe;
+        }
+        div.flex-wrap.d-flex.flex-row.justify-content-center{
+            margin-bottom: 30px;
+            margin-top: 50px;
+            gap: 1rem;
+            .card1{
+                background: url(../06-challenge/images/portfolio1.png) no-repeat;
+            }
+            .card2{
+                background: url(../06-challenge/images/portfolio2.png) no-repeat;
+            }
+            .card3{
+                background: url(../06-challenge/images/portfolio3.png) no-repeat;
+                background-size: cover;
+            }
+            div.card{
+                width: 400px;
+                height: 260px;
+                border: #15320E solid 2px;
+            }
+}
+}
+footer{
+    background-color: #152E0F;
+    padding-top: 20px;
+    div{
+        a{
+            img{
+                margin-right: 20px;
+            }
+        }
+        gap: 2rem;
+        div{
+            a.nav-link{
+                font-size: 2rem;
+            }
+            a{ 
+                img{
+                height: 30px;
+                }
+            }
+        }
     }
 }

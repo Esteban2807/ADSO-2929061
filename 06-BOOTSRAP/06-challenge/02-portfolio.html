@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,39 +12,47 @@
         @import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Oswald:wght@200..700&family=Roboto+Slab&display=swap');
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md fixed-topes par
      navbar-dark bg-custom">
         <div class="container-fluid">
-          <a class="navbar-brand fs-1" href="#"> <img src="images/icon.svg" alt="Icon" padd width="60px">Juan Esteban Muñoz</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto mb-2 mb-md-0 fs-2">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">About</a>
-                </li><li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Portfolio</a>
-                </li>
-              </ul>
-          </div>
+            <a class="navbar-brand fs-1" href="#"> <img src="images/icon.svg" alt="Icon" padd width="60px">Juan Esteban
+                Muñoz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0 fs-2">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#portfolio">Portfolio</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
-      <main class="container-fluid">
+    </nav>
+    <main class="container-fluid">
         <!-- 02-Hero -->
-         <div class="hero row row-cols-md-2 row-cols-1">
+        <div id="home" class="hero row row-cols-md-2 row-cols-1">
             <!-- Left-Text -->
             <div class="col d-flex flex-column justify-content-center align-items-start px-5">
                 <h3 class="fs-3">Hello I am</h3>
                 <h2 class="f1 fw-bolder">Juan Esteban Muñoz Giraldo</h2>
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nulla, inventore nostrum natus amet, itaque ex consectetur nam impedit rem ratione doloremque distinctio incidunt, quas quo reiciendis eligendi iusto obcaecati!</p>
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nulla, inventore
+                    nostrum
+                    natus amet, itaque ex consectetur nam impedit rem ratione doloremque distinctio incidunt, quas quo
+                    reiciendis
+                    eligendi iusto obcaecati!</p>
                 <a href="javascript:;" class="btn bg-custom px-3">Hire Me</a>
 
             </div>
@@ -51,9 +60,119 @@
             <div class="col">
 
             </div>
-         </div>
-      </main>
+        </div>
+        <!-- 03-Hero -->
+        <div id="about" class="hero2 row row-cols-md-2 row-cols-1">
+            <!-- Left-Text -->
+            <div class="col d-flex flex-column justify-content-center align-items-start px-5">
 
-      <script src="../js/bootstrap.bundle.min.js"></script>
+
+            </div>
+            <!-- Foto -->
+            <div class="col d-flex flex-column justify-content-center align-items-start p-60">
+                <h2>About</h2>
+                <h3>Why you hire me?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi soluta iusto dolorum autem voluptates
+                    magni officiis quam fuga aut vel illo architecto reiciendis delectus ratione, reprehenderit, eos
+                    numquam repellendus debitis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+                    veniam natus quae optio quibusdam ipsa maxime, sit voluptatem totam repudiandae, cumque molestias
+                    consequatur nemo repellendus labore quo commodi amet! Porro.</p>
+                <div class="graphics d-flex flex-column">
+                    <h3>UI/UX Design</h3>
+                    <div class="barra1 bg-white">
+                        <div class="barra bg-custom"></div>
+                    </div>
+                    <h3>CSS/HTML</h3>
+                    <div class="barra2 bg-white">
+                        <div class="barra bg-custom"></div>
+                    </div>
+                    <h3>Figma</h3>
+                    <div class="barra3 bg-white">
+                        <div class="barra bg-custom"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Services -->
+        <div id="services"class="services row row-cols-1 ">
+            <div class="d-flex flex-wrap flex-column justify-content-start align-items-center">
+                <h2 class="text-white pt-3">Services</h2>
+                <h3 class="text-white pt-1">Services | Provide</h3>
+                <div class="flex-wrap d-flex flex-row justify-content-center">
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/Pincel.svg" alt="Pincel">
+                        <h4>Graphic Design</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/PC.svg" alt="PC">
+                        <h4>Web Design</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/Ui.svg" alt="Ui">
+                        <h4>UI/UX Design</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/Development.svg" alt="Development.svg">
+                        <h4>Frontend Development</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/QR.svg" alt="QR.svg">
+                        <h4>Business Analysis</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                    <div class="card bg-white d-flex flex-column  px-3 pt-3">
+                        <img src="images/Arroba.svg" alt="Arroba.svg">
+                        <h4>Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi et ad in quae inventore
+                            exercitationem ea alias, laboriosam provident</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Portfolio -->
+        <div id="portfolio" class="portfolio row row-cols-1 ">
+            <div class="d-flex flex-wrap flex-column justify-content-start">
+                <h2 class="text-green-950 pt-3">Portfolio</h2>
+                <h3 class="text-green-950 pt-1">Services | Provide</h3>
+                <div class="flex-wrap d-flex flex-row justify-content-center">
+                    <div class="card card1"></div>
+                    <div class="card card2"></div>
+                    <div class="card card3"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+         <footer class="row row-cols-1">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a class="navbar-brand fs-1 text-white" href="#"> <img src="images/icon.svg" alt="Icon" padd width="60px">Juan Esteban Muñoz</a>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <a href="https://www.instagram.com/esteban_munoz_giraldo/" target="_blank"><img src="images/Instagram.svg" alt="Ig"></a>
+                    <a href="https://www.tiktok.com/@28esteban07?is_from_webapp=1&sender_device=pc" target="_blank"><img src="images/Tiktok.svg" alt="Tik Tok"></a>
+                    <a href="https://open.spotify.com/playlist/3evoowIpBkNfIVeKW0kJP5?si=ii9TYQJfT1isEYaSEVlNpA" target="_blank"><img src="images/Spotify.svg" alt="Spotify"></a>
+                    <a href="https://www.github.com/Esteban2807" target="_blank"><img src="images/Github.svg" alt="Github"></a>
+                </div>
+                <a class="text-white" href="#">juan_emunozg@soy.sena.edu.co</a>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <a class="nav-link text-white" href="#home">Home</a>
+                    <a class="nav-link text-white" href="#about">About</a>
+                    <a class="nav-link text-white" href="#services">Services</a>             
+                    <a class="nav-link text-white" href="#portfolio">Portfolio</a>
+                </div>
+            </div>
+         </footer>
+    </main>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
