@@ -9,33 +9,77 @@
     <link rel="stylesheet" href="tailwind.config.js">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Jomhuria&family=Oswald:wght@200..700&family=Roboto+Slab&display=swap');
-       
     </style>
 </head>
 
-<body class="font-[Caesar_Dressing]">  
-    <main class="h-dvh flex row gap-4 justify-center items-center ">
-        <section class="home w-[432px] h-[932px] bg-black border rounded-[20px] relative"> 
+<body class="font-[Caesar_Dressing]">
+    <main class="min-h-[100dvh] flex flex-col gap-4 justify-center items-center ">
+        <section id="home" class=" transition-all
+        ease-in
+        duration-500
+        translate-x-[-400%]
+        target:translate-x-[0px] overflow-hidden w-[432px] h-[932px] bg-black border rounded-[20px] relative">
             <img src="img/Ryuk.png" alt="" class="w-[432px] h-[447px] border rounded-[20px] absolute top-0">
             <img src="img/Cuadro chiquito.png" alt="" class="absolute right-[40%] top-[35%] z-40">
-            <div class="w-[432px] h-[562px] bg-black absolute bottom-0 border rounded-[20px] flex flex-col items-center">
+            <div
+                class="w-[432px] h-[562px] bg-black absolute bottom-0 border rounded-[20px] flex flex-col items-center">
                 <img src="img/Welcome to Death Note.png" alt="" class="pt-[155px]">
                 <div class="w-[321px] h-[70px] bg-white border rounded-3xl mt-[31px] flex row ">
-                    <div class="w-1/2 h-full bg-[#1E1E1E] border rounded-l-3xl flex justify-center items-center">
-                            <h3 class="text-white text-3xl">SIGN IN</h3>
-                    </div>
-                    <div class="w-1/2 h-full bg-[#CFCFCF] border rounded-r-3xl flex justify-center items-center">
+                    <a  href=".sign_in"class="w-1/2 h-full bg-[#1E1E1E] border rounded-l-3xl flex justify-center items-center">
+                        <h3 class="text-white text-3xl">SIGN IN</h3>
+                    </a>
+                    <a  href="#sign_up"class="w-1/2 h-full bg-[#CFCFCF] border rounded-r-3xl flex justify-center items-center">
                         <h3 class="text-3xl">SIGN UP</h3>
-                </div>
+                    </a>
                 </div>
             </div>
-            
-        </section>
-        <section class="sign in w-[432px] h-[932px] bg-black"> 
 
         </section>
-        <section class="sign up w-[432px] h-[932px] bg-black"> 
-
+        <section  id="sign_in" class="  transition-all
+        ease-in
+        duration-500
+        translate-x-[-400%]
+        target:translate-x-[0px] overflow-hidden flex flex-col w-[432px] h-[932px] bg-black border rounded-[20px] relative">
+            <a href="#home" class="absolute top-5 left-2 z-10"><img src="img/back.svg" alt="back"></a>
+            <img src="img/Light.png" alt="" class="w-[432px] h-[396px] border rounded-[20px] absolute top-0">
+            <h2 class="text-white font-semibold mt-[450px] text-5xl ml-10">SiGN IN <a href="#sign_up" class="font-normal text-3xl text-[#fffa]">/Sign up</a></h2>
+            <form action="" class="flex flex-col mt-25 items-center">
+               <label class="flex flex-row border-b-2 border-solid w-3/4 border-[#fffa]"><img src="img/icon_user.svg" alt="user ico"><input  class="text-white outline-none " type="text" placeholder="Email / mobile number"> </label> 
+               <label class="flex flex-row border-b-2 border-solid mt-10 w-3/4 border-[#fffa]"><img src="img/locker_icon.svg" alt="locker ico"><input  class="text-white outline-none " type="text" placeholder="Password"> <img src="img/eye_ico.svg" alt="eye" class="ml-15"> </label> 
+               <a href="#forget" class="self-end text-[#0B4B68] mr-15">FORGET PASSWORD</a>
+               <button class="h-[60px] w-[260px] bg-[#0B4B68] rounded-full text-white text-3xl mt-7 hover:bg-[0B4B68a] hover:border-solid hover:border-white hover:border-2 ease-in transition-all duration-1000">
+                        SIGN IN
+               </button>
+               <p class="text-[#fffa] mt-2">OR</p>
+               <div class="text-[#fffa] flex flex-row gap-20 mt-3"> 
+                    <a href="https://facebook.com" class="flex flex-row"><img src="img/facebook.svg" alt="facebook"> FACEBOOK</a>
+                    <a href="https://google.com" class="flex flex-row"><img src="img/Google.svg" alt="google"> GOOGLE</a>
+               </div>
+            </form>
+        </section>
+        <section id="sign_up" class="transition-all
+        ease-in
+        duration-500
+        translate-x-[-400%]
+        target:translate-x-[0px] overflow-hidden flex flex-col w-[432px] h-[932px] bg-black border rounded-[20px] relative">
+            <a href="#home" class="absolute top-5 left-2 z-10"><img src="img/back.svg" alt="back"></a>
+            <img src="img/L.png" alt="L" class="w-[430px] h-[242px] border rounded-[20px] absolute top-0">
+            <h2 class="text-white font-semibold mt-[300px] text-5xl ml-10">SiGN UP <a href="#sign_in" class="font-normal text-3xl text-[#fffa]">/Sign in</a></h2>
+            <form action="" class="flex flex-col mt-25 items-center">
+                <label class="flex flex-row border-b-2 border-solid w-3/4 border-[#fffa]"><img src="img/icon_user.svg" alt="user ico"><input  class="text-white outline-none " type="text" placeholder="USER NAME"> </label>
+                <label class="flex flex-row border-b-2 border-solid mt-10  w-3/4 border-[#fffa]"><img src="img/Email.svg" alt="user email" class="mr-1"><input  class="text-white outline-none " type="text" placeholder="Email"> </label> 
+                <label class="flex flex-row border-b-2 border-solid mt-10 w-3/4 border-[#fffa]"><img src="img/Phone.svg" alt="user phone"><input  class="text-white outline-none " type="text" placeholder="Phone"> </label> 
+                <label class="flex flex-row border-b-2 border-solid mt-10 w-3/4 border-[#fffa]"><img src="img/locker_icon.svg" alt="locker ico"><input  class="text-white outline-none " type="text" placeholder="Password"> <img src="img/eye_ico.svg" alt="eye" class="ml-15"> </label> 
+                <a href="#forget" class="self-end text-[#0B4B68] mr-15">FORGET PASSWORD</a>
+                <button class="h-[60px] w-[260px] bg-[#0B4B68] rounded-full text-white text-3xl mt-7 hover:bg-[0B4B68a] hover:border-solid hover:border-white hover:border-2 ease-in transition-all duration-1000">
+                         SIGN UP
+                </button>
+                <p class="text-[#fffa] mt-2">OR</p>
+                <div class="text-[#fffa] flex flex-row gap-20 mt-3"> 
+                     <a href="https://facebook.com" class="flex flex-row"><img src="img/facebook.svg" alt="facebook"> FACEBOOK</a>
+                     <a href="https://google.com" class="flex flex-row"><img src="img/Google.svg" alt="google"> GOOGLE</a>
+                </div>
+             </form>
         </section>
     </main>
     <script src="js/tailwind.js"></script>
