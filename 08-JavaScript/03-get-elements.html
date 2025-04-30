@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-get-elements</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        ul,li{
+            padding: 0;
+        }
+        ul,li,
+        figure.animal{
+            background-color: #0006;
+            border-radius: 2px;
+            height: 25px;
+            margin: 2px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            zoom: 2.5;
+        }
+    </style>
+</head>
+<body class="javascript">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a></nav>
+    
+    
+    
+    
+    <main>
+        <header>
+            <h1>03-get-elements</h1>
+            <h2>Access and manipulate HTML elements using JavaScript.</h2>
+        </header>
+        <section>
+            <h3>Get Element By ID</h3>
+            <p id="year"></p>
+
+            <h3>Get Element By Tag Name</h3>
+            <ul>
+                <li>🍅</li>
+                <li>🍇</li>
+                <li>🍊</li>
+            </ul>
+            <h4></h4>
+
+            <h3>Get Elements By Class Name</h3>
+            <p class="paragraph">Lorem, ipsum dolor.</p>
+            <p class="paragraph">Lorem, ipsum dolor.</p>
+            <p class="paragraph">Lorem, ipsum dolor.</p>
+            <h3>Query Selector y Query Selector All</h3>
+            <figure class="animal first">🦊</figure>
+            <figure class="animal">🐼</figure>
+            <figure class="animal">🐷</figure>
+           <script>
+            const year = document.getElementById('year')
+            let ndate = new Date()
+            year.textContent = `Current year: ${ndate.getFullYear()}`
+
+            //Get Elements By Tag Name
+            const fruits = document.getElementsByTagName('li')
+            const h4s = document.getElementsByTagName('h4')
+
+            h4s[1].textContent = `There are: ${fruits.length} fruits`
+            h4s[1].innerHTML += `The last fruit is: ${fruits[fruits.length-1].textContent}`
+           </script>
+        </section>
+    </main>
+    
+</body>
+</html>
