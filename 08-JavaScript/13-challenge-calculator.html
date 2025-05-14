@@ -147,10 +147,14 @@
                 border-right: 10px solid  #fff;
                 header{
                     input.operation{
-                        color: #fff;
+                        color: #4B4545;
+                        background-color: #000;
                     }
                     h4.result{
                         color: #fff;
+                    }
+                    .btn-mode{
+                        background:url(images/calc/dark-mode.svg) no-repeat center center;
                     }
                 }
                 footer{
@@ -160,6 +164,68 @@
                             opacity: 1;
                             transform: scale(1.1);
                         }
+                        &.btn-clear {
+                            background: url(images/calc/btn-clear-dark.svg) no-repeat center center;
+                        }
+                        &.btn-del {
+                            background: url(images/calc/btn-del-dark.svg) no-repeat center center;
+                        }
+                        &.btn-pow {
+                            background: url(images/calc/btn-pow-dark.svg) no-repeat center center;
+                        }
+                        &.btn-mod {
+                            background: url(images/calc/btn-mod-dark.svg) no-repeat center center;
+                        }
+                        &.btn-1 {
+                            background: url(images/calc/btn-1-dark.svg) no-repeat center center;
+                        }
+                        &.btn-2 {
+                            background: url(images/calc/btn-2-dark.svg) no-repeat center center;
+                        }
+                        &.btn-3 {
+                            background: url(images/calc/btn-3-dark.svg) no-repeat center center;
+                        }
+                        &.btn-mult {
+                            background: url(images/calc/btn-mult-dark.svg) no-repeat center center;
+                        }
+                        &.btn-4 {
+                            background: url(images/calc/btn-4-dark.svg) no-repeat center center;
+                        }
+                        &.btn-5 {
+                            background: url(images/calc/btn-5-dark.svg) no-repeat center center;
+                        }
+                        &.btn-6 {
+                            background: url(images/calc/btn-6-dark.svg) no-repeat center center;
+                        }
+                        &.btn-subs {
+                            background: url(images/calc/btn-subs-dark.svg) no-repeat center center;
+                        }
+                        &.btn-7 {
+                            background: url(images/calc/btn-7-dark.svg) no-repeat center center;
+                        }
+                        &.btn-8 {
+                            background: url(images/calc/btn-8-dark.svg) no-repeat center center;
+                        }
+                        &.btn-9 {
+                            background: url(images/calc/btn-9-dark.svg) no-repeat center center;
+                        }
+                        &.btn-plus {
+                            background: url(images/calc/btn-plus-dark.svg) no-repeat center center;
+                        }
+                        &.btn-div {
+                            background: url(images/calc/btn-div-dark.svg) no-repeat center center;
+                        }
+                        &.btn-0 {
+                            background: url(images/calc/btn-0-dark.svg) no-repeat center center;
+                        }
+                        &.btn-dot {
+                            background: url(images/calc/btn-dot-dark.svg) no-repeat center center;
+                        }
+                        &.btn-equal {
+                            background: url(images/calc/btn-equal-dark.svg) no-repeat center center;
+                        }
+
+
                     }
                 }
             }
@@ -176,10 +242,6 @@
                     d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
             </svg></a>
     </nav>
-
-
-
-
     <main>
         <header>
             <h1>13-challenge-calculator</h1>
@@ -258,7 +320,32 @@
     btnMode.addEventListener('click', (e) => {
         calculator.classList.toggle('dark')
     })
-    
+
+    // Keyboard events
+    document.addEventListener('keydown', (e) => {
+        if (e.key >= 0 && e.key <= 9) {
+            operation.value += e.key
+        } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' || e.key === '%') {
+            operation.value += e.key
+        } else if (e.key === 'Backspace') {
+            operation.value = operation.value.slice(0, -1)
+        } else if (e.key === 'Enter') {
+            result.textContent = eval(operation.value)
+        } else if (e.key === 'Escape') {
+            operation.value = ''
+            result.innerHTML = ''
+        }
+    })
+    //Dark mode
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+    darkMode.addEventListener(darkModeChange)
+    function darkModeChange(dm) {
+        if (dm.matches) {
+            calculator.classList.add('dark')
+        } else {
+            calculator.classList.remove('dark')
+        }
+    }
     
 
     </script>
