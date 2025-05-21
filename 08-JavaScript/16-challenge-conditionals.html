@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-challenge-conditionals</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        div.wheater {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            div.search{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.4rem;
+                flex-direction: row;
+            }
+            input.query{
+                border:none;
+                outline: none;
+                padding: 0.4rem 0.6rem;
+                border-radius: 4rem;
+            }
+            button.btn-search{
+                background-color: #fff;
+                border: none;
+                width: 20px;
+                cursor: pointer;
+                transition: all ease-in 0.4s;
+                &:hover{
+                    transform: scale(1.1);
+                }
+
+            }
+            figure.widget {
+               width: 100%;
+               height: 100%;
+                display: flex;
+                border: #fff solid 10px;
+                background-color: #7BCBE2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.4rem;
+                padding: 1rem;
+                color: #000;
+                position: relative;
+                figure.sun{
+                    background: url('images/Clima/Sun.svg') no-repeat center center;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    left: 330px;
+                    top: 20px;
+                    
+
+                }
+                h3.temp{
+                    position: absolute;
+                    left: 280px;
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    
+                }
+            h3.country{
+                margin-bottom: 0;
+                
+                
+            }
+            h3{
+                border: none;
+            }
+            .cANDh{
+                display: flex;
+                flex-direction: row;
+                gap: 8rem;
+            }
+                &.dark{
+                    background: url('images/Clima/stars.svg');
+                background-color: #0B0624;
+                border: #000 solid 10px;
+                color: #fff;
+                h1,h3,h4,p{
+                    color: #fff;
+                }
+                figure.sun{
+                    background: url('images/Clima/Moon.svg') no-repeat center center;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    left: 330px;
+                    top: 20px;
+                }
+            }
+            }
+            
+
+
+           
+            }
+        
+    </style>
+</head>
+<body class="javascript">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a></nav>
+    
+    
+    
+    
+    <main>
+        <header>
+            <h1>16-challenge-conditionals</h1>
+            <h2>Solve problems using conditional logic.</h2>
+        </header>
+        <section>
+           <div class="wheater">
+            <div class="search">
+                <input type="text" class="query" placeholder="Search for a city" />
+                <button class="btn-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#000000" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </button>
+            </div>
+            <figure class="widget">
+                
+            </figure>
+           </div>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const q = document.querySelector('.query')
+        const btnSearch = document.querySelector('.btn-search')
+        const infoList = document.querySelector('.info')
+        const widget = document.querySelector('.widget')
+        
+        // Events
+        btnSearch.addEventListener('click', () => {
+            if(q.value.lenght != 0) {
+                showWeather(q.value)
+                q.value = ''
+            } else {
+                alert('Please enter a location')   
+            }
+        })
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key == 'Enter') {
+                if(q.value.lenght != 0) {
+                    showWeather(q.value)
+                    q.value = ''
+                } else {
+                    alert('Please enter a location')   
+                }
+            }
+        })
+
+        
+
+        
+        
+        const showWeather = async (q) => {
+            const url = `https://api.weatherapi.com/v1/current.json?key=9a61cceb9d46444fa9d11106251005&q=${q}`
+            const response = await fetch(url)
+            const data = await response.json()
+
+            const info = {
+            "country" : data.location.country,
+            "name" : data.location.name,
+            "datetime" : data.current.last_updated,
+            "isDay" : data.current.is_day,
+            "conditionText" : data.current.condition.text,
+            "conditionIcon" : data.current.condition.icon,
+            "humidity" : data.current.humidity,
+            "cloud" : data.current.cloud,
+            "tempc" : data.current.temp_c,
+        }
+        
+        
+        if (info.isDay == 1) {
+            widget.classList.remove('dark')
+        } else {
+            widget.classList.add('dark')
+        }
+
+        widget.innerHTML = `
+        
+            <h3 class="country">${info.country}</h3>
+            <figure class="sun"> </figure>
+            <h1>${info.name}</h1>
+            <h3>${info.datetime}</h3>
+            <h3 class="temp"><b>${info.tempc}°C</b></h3>
+            <img src="images/Clima/nubes.png" width="300">
+            <h4>Condition: <b>${info.conditionText}</b></h4>
+            <div class="cANDh">
+                <p>Humidity: <b>${info.humidity}</b></p>
+            <p>Cloud: <b>${info.cloud}</b></p>
+                </div>
+            
+        `
+       
+       
+       
+    }
+        
+
+        
+    </script>
+</body>
+</html>
