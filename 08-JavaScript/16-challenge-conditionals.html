@@ -63,8 +63,9 @@
                 }
                 h3.temp{
                     position: absolute;
-                    left: 280px;
-                    font-size: 1.3rem;
+                    left: 300px;
+                    top: 40%;
+                    font-size: 2.5rem;
                     font-weight: 700;
                     
                 }
@@ -196,9 +197,9 @@
             <figure class="sun"> </figure>
             <h1>${info.name}</h1>
             <h3>${info.datetime}</h3>
-            <h3 class="temp"><b>${info.tempc}°C</b></h3>
+            <h3 class="temp"><b>${info.tempc}°</b></h3>
             <img src="images/Clima/nubes.png" width="300">
-            <h4>Condition: <b>${info.conditionText}</b></h4>
+            <h4>Condition: <b>${info.conditionText} <img src="${info.conditionIcon}"> </b></h4>
             <div class="cANDh">
                 <p>Humidity: <b>${info.humidity}</b></p>
             <p>Cloud: <b>${info.cloud}</b></p>
