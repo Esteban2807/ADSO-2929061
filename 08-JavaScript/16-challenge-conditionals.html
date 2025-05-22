@@ -37,15 +37,17 @@
                 }
 
             }
+            figure.widget.day{
+                border: #fff solid 10px;
+                background: url("images/clima/fondoday.svg") center center no-repeat;
+                background-color: #7BCBE2;
+            }
             figure.widget {
                width: 100%;
-               height: 100%;
+               height: 380px;
                 display: flex;
-                border: #fff solid 10px;
-                background-color: #7BCBE2;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
                 gap: 0.4rem;
                 padding: 1rem;
@@ -64,20 +66,20 @@
                 h3.temp{
                     position: absolute;
                     left: 300px;
-                    top: 40%;
+                    top: 35%;
                     font-size: 2.5rem;
                     font-weight: 700;
                     
                 }
-                div.nubes{
-                    width: 300px;
-                    height: 100px;
-                    background: url('images/clima/nubes.svg') no-repeat center center;
-                }
+                
             h3.country{
                 margin-bottom: 0;
                 
                 
+            }
+            h4{
+                position: absolute;
+                bottom: 45px;
             }
             h3{
                 border: none;
@@ -86,10 +88,13 @@
                 display: flex;
                 flex-direction: row;
                 gap: 8rem;
+                position: absolute;
+                bottom: 20px;
             }
+            
                 &.dark{
-                    background: url('images/clima/stars.svg');
-                background-color: #0B0624;
+                    background: url('images/clima/fondonight.svg') center center no-repeat;
+                    background-color: #0B0624;
                 border: #000 solid 10px;
                 color: #fff;
                 h1,h3,h4,p{
@@ -191,9 +196,16 @@
         
         
         if (info.isDay == 1) {
-            widget.classList.remove('dark')
+            widget.classList.remove('dark') 
         } else {
             widget.classList.add('dark')
+        }
+
+        if (info.isDay == 0) {
+            widget.classList.remove('day')
+        }
+        else{
+            widget.classList.add('day')
         }
 
         widget.innerHTML = `
@@ -203,7 +215,6 @@
             <h1>${info.name}</h1>
             <h3>${info.datetime}</h3>
             <h3 class="temp"><b>${info.tempc}°</b></h3>
-            <div class="nubes"> </div>
             <h4>Condition: <b>${info.conditionText} <img src="${info.conditionIcon}"> </b></h4>
             <div class="cANDh">
                 <p>Humidity: <b>${info.humidity}</b></p>
