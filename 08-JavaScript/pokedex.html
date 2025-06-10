@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Pokedex</title>
+    <style>
+        h3 {
+            border-bottom: 0px solid #000;
+            text-decoration: none;
+        }
+
+        #scene {
+            width: 380px;
+            height: 700px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .front,
+        .back {
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .front {
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .hide {
+            display: none;
+            content: '';
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+
+            div#home {
+                background: url(images/pokedex/fondo.svg) center center no-repeat;
+                width: 380px;
+                height: 700px;
+                background-color: #000;
+                display: flex;
+                flex-direction: column;
+                gap: 29rem;
+                align-items: center;
+
+                &.hide {
+                    content: '';
+                    display: none;
+                }
+
+                a {
+                    height: 75px;
+                }
+            }
+
+            div#pokemons {
+                background-color: #000;
+                width: 380px;
+                height: 700px;
+
+                a {
+                    margin-left: 5px;
+                }
+
+                select.pk-generation {
+                    appearance: none;
+                    padding: 0.4rem 0.8rem;
+                    display: flex;
+                    margin: 2rem auto;
+                    background-color: #000;
+                    color: #fff;
+                }
+
+
+
+                ul.pokemons {
+                    &.hide {
+                        content: '';
+                        display: none;
+                    }
+                    list-style: none;
+                    margin: 0;
+                    padding: 10px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.4rem;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    height: 470px;
+
+                    &::-webkit-scrollbar {
+                        width: 0.4rem;
+
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #fff9;
+                        border-radius: 0.4rem;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: #000;
+                    }
+
+                    li {
+                        display: flex;
+                        flex-direction: row;
+
+                        border-radius: 0.4rem;
+                        text-align: center;
+
+                        div.col1,
+                        div.col2 {
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 4px;
+                            align-items: start;
+
+                        }
+
+                        div.col1 {
+                            gap: 0.4rem;
+                            width: 40%;
+
+                            h4 {
+                                font-size: 2rem;
+                            }
+
+                            h5 {
+                                font-size: 1.5rem;
+                                text-decoration: underline;
+                            }
+                        }
+
+                        div.col2 {
+                            justify-content: end;
+                            width: 60%;
+
+                            img {
+                                height: 100px;
+                                width: auto;
+                            }
+                        }
+                    }
+
+                    h4,
+                    h5 {
+                        margin: 0;
+                        text-align: center;
+                        color: white;
+                    }
+                }
+
+            }
+        }
+
+        div#pkinfo {
+            width: 380px;
+            height: 700px;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+
+            &.hide {
+                content: '';
+                display: none;
+            }
+
+        }
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            justify-self: center;
+            height: 100px;
+            width: auto;
+            &.hide{
+                content: '';
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="javascript">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>18 - Pokedex</h1>
+            <h2>Obtén y muestra datos de la API de Pokedex</h2>
+        </header>
+        <section>
+            <div id="home">
+                <img src="images/pokedex/Logo.svg" alt="Logo">
+                <a href="#pokemons" class="toPokemons"><img src="images/pokedex/buscar.svg" alt="Entrar"></a>
+            </div>
+            <div id="scene" class="hide">
+                <div class="card" id="card">
+                    <div class="front hide" id="pokemons">
+                        <a href="#home" class="backhome"> <svg xmlns="http://www.w3.org/2000/svg" height="14"
+                                width="12.25"
+                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fbff00"
+                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg></a>
+
+                        <img src="images/pokedex/logo.svg" alt="">
+                        <select class="pk-generation">
+                            <option value="">Selecciona una generación...</option>
+                        </select>
+                        
+                            <img src="images/pokedex/loader-pika.gif" alt="Cargando..." width="100" class="loader hide">
+                        
+                            <ul class="pokemons hide">
+                           
+
+                        </ul>
+                    </div>
+                    <div class="back hide" id="pkinfo">
+                        <a href="#pokemons" class="backlist"><svg xmlns="http://www.w3.org/2000/svg" height="14"
+                                width="12.25"
+                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fbff00"
+                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg></a>
+                        <div class="infoPK">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        //Elementos
+        const home = document.querySelector('#home');
+        const toPK = document.querySelector('.toPokemons');
+        const listPokemons = document.querySelector('#pokemons')
+        const backHome = document.querySelector('.backhome')
+        const pokemons = document.querySelector('.pokemons');
+        const pkGeneration = document.querySelector('.pk-generation');
+        const pkInfo = document.querySelector('#pkinfo');
+        const backlist = document.querySelector('.backlist');
+        const infoPK = document.querySelector('.infoPK');
+        const toInfoPK = document.querySelectorAll('li.toInfoPK');
+        const card = document.querySelector('#card');
+        const escene = document.querySelector('#scene');
+        const loader = document.querySelector('.loader');
+
+
+
+        //Events
+
+        toPK.addEventListener('click', (e) => {
+            home.classList.add('hide')
+            listPokemons.classList.remove('hide')
+            escene.classList.remove('hide')
+
+        })
+
+        backHome.addEventListener('click', (e) => {
+            home.classList.remove('hide')
+            listPokemons.classList.add('hide')
+            escene.classList.add('hide')
+        })
+
+        pokemons.addEventListener('click', (e) => {
+            const li = e.target.closest('li.toInfoPK');
+            if (li) {
+                const id = li.dataset.id;
+                card.classList.add('flipped');
+                showPokemonInfo(id);
+            }
+        });
+        backlist.addEventListener('click', (e) => {
+            e.preventDefault();
+            card.classList.remove('flipped');
+            setTimeout(() => {
+                listPokemons.classList.remove('hide');
+                pkInfo.classList.add('hide');
+            }, 500);
+        });
+
+        //Objects
+        const generations = {
+            range: [
+                { from: 1, to: 151 },
+                { from: 152, to: 251 },
+                { from: 252, to: 386 },
+                { from: 387, to: 493 },
+                { from: 494, to: 649 },
+                { from: 650, to: 721 },
+                { from: 722, to: 809 },
+                { from: 810, to: 890 },
+                { from: 891, to: 1025 }
+            ]
+        }
+
+        const types = {
+            normal: "#a8a77a",
+            fire: "#ee8130",
+            water: "#6390f0",
+            electric: "#f7d02c",
+            grass: "#7ac74c",
+            ice: "#96d9d6",
+            fighting: "#c22e28",
+            poison: "#a33ea1",
+            ground: "#e2bf65",
+            flying: "#a98ff3",
+            psychic: "#f95587",
+            bug: "#a6b91a",
+            rock: "#b6a136",
+            ghost: "#735797",
+            dragon: "#6f35fc",
+            dark: "#705746",
+            steel: "#b7b7ce",
+            fairy: "#d685ad",
+            shadow: "#5a5a5a",
+            unknown: "#68a090",
+        }
+
+
+        generations['range'].forEach((element, index) => {
+            pkGeneration.innerHTML += `<option value="${index}">Generation ${++index}</option>`
+        });
+        pkGeneration.addEventListener('change', function (e) {
+            loadPokemon(generations.range[this.value].from, generations.range[this.value].to)
+        })
+
+        const loadPokemon = async (from, to) => {
+            loader.classList.remove('hide')
+            pokemons.classList.add('hide')
+            pokemons.innerHTML = ''
+            setTimeout(()=>{
+                loader.classList.add('hide')
+                pokemons.classList.remove('hide')
+            },4000)
+            for (let pk = from; pk <= to; pk++) {
+                const url = `https://pokeapi.co/api/v2/pokemon/${pk}`
+                const response = await fetch(url)
+                const data = await response.json()
+                let typeColor = data.types[0].type.name
+                const typeIcon = `<img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/${data.types[0].type.name}.svg" width="20" />`;
+                pokemons.innerHTML += `<li class="toInfoPK" data-id="${data.id}"  style="border-color: ${types[typeColor]}; background: linear-gradient(black, ${types[typeColor]})">
+                                            <div class="col1"><h5>${data.name}</h5>
+                                              ${typeIcon}
+                                              <h4>#${data.id}</h4> </div>  
+                                            <div class="col2">
+                                              <img src="${data.sprites.front_default}">
+                                            </div>
+                                         </li>`
+
+
+
+
+            }
+        }
+         loadPokemon(1, 151)
+        // Mostrar detalle del Pokémon
+        async function showPokemonInfo(id) {
+            listPokemons.classList.add('hide');
+            pkInfo.classList.remove('hide');
+            infoPK.innerHTML = '<p style="color: white;">Cargando...</p>';
+
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+            const data = await res.json();
+
+            const color = types[data.types[0].type.name];
+
+            const stats = data.stats.map(stat => ({
+                name: stat.stat.name,
+                value: stat.base_stat
+            }));
+
+            const typeIcon = `<img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/${data.types[0].type.name}.svg" width="40" />`;
+
+            infoPK.innerHTML = `
+  <div class="card-container">
+    <div class="card">          
+      <div class="face front"></div>  
+      <div class="face back">
+        <div style="
+             text-align:center;color:white;font-family:sans-serif;
+             padding:1rem;border:2px solid ${color};
+             border-radius:1rem;background:#000;">
+          <h2 style="font-size:1.8rem;">${capitalize(data.name)}</h2>
+          <h3 style="color:gray;">#${String(data.id).padStart(3, '0')}</h3>
+          ${typeIcon}
+          <div style="margin:1rem 0;">
+            <img src="${data.sprites.other['official-artwork'].front_default}" width="150">
+          </div>
+          <h4 style="margin-bottom:.5rem;">PK Stats</h4>
+          ${stats.map(renderStatBar).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+            requestAnimationFrame(() => {
+                document.querySelector('#pkinfo .card').classList.add('flipped');
+            });
+
+
+        }
+
+        function renderStatBar(stat) {
+            const colors = {
+                hp: 'limegreen',
+                attack: 'crimson',
+                defense: '#3399FF',
+                'special-attack': 'orange',
+                'special-defense': 'navy',
+                speed: 'hotpink',
+            };
+
+            const nameMap = {
+                hp: 'HP',
+                attack: 'Atk',
+                defense: 'Def',
+                'special-attack': 'SAtk',
+                'special-defense': 'SDef',
+                speed: 'Sp'
+            };
+
+            const percent = Math.min(100, (stat.value / 150) * 100).toFixed(0);
+
+            return `
+        <div style="margin-bottom: 0.4rem; text-align: left;">
+            <span style="color:white;">${nameMap[stat.name] || stat.name}</span>
+            <div style="background-color: #444; height: 10px; border-radius: 4px; overflow: hidden;">
+                <div style="width: ${percent}%; height: 100%; background-color: ${colors[stat.name] || 'gray'};"></div>
+            </div>
+        </div>
+    `;
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        pokemons.addEventListener('click', (e) => {
+            const li = e.target.closest('li.toInfoPK');
+            if (li) {
+                const id = li.dataset.id;
+                showPokemonInfo(id);
+            }
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
