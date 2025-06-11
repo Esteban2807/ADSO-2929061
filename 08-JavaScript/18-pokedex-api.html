@@ -4,44 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18-Pokedex-Api</title>
+    <title>01-write</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         * {
+            box-sizing:content-box;
+        }
+    section{
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        justify-content: center;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: 1px #000 solid;
+        border-radius: 10px;
+        padding: 1rem;
+        width: 200px;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border: #000 2px solid;
+        }
+    }    
+        a {
             color: #000;
-
-        }
-        select.pk-generation{
-            /* appearance: none; */
-            padding: 0.4rem;
-        }
-
-        ul.pokemons {
-            margin-left: 10px;
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            margin: 0;
-            padding: 0;
-            gap: 0.4rem;
-
-            li {
-                border: 2px solid #000;
-                border-radius: 0.4rem;
-                text-align: center;
-                &.hide{
-                    display: none;
-                }
-            }
-            
-        }
-        img.loader {
-            display: flex;
-            margin: 8rem auto;
-            width: 160px;
-            &.hide {
-                display: none;
+                text-decoration: none;
+            img{
+                width: 20px;
+                
             }
         }
     </style>
@@ -58,154 +55,19 @@
     </nav>
     <main>
         <header>
-            <h1>18-Pokedex-Api</h1>
-            <h2>Fetch and display data from the Pokedex API.</h2>
+            <h1>Pokedex Figma & Marcado</h1>
+            <h2>Dentro de está pagina podrás navegar entre el diseño Figma y el marcado de la Pokedex</h2>
         </header>
         <section>
-            <select class="pk-generation">
-                <option value="" >Selecciona una generacion</option>
-            </select>
-            <ul class="pokemons"></ul>
-            <img src="images/pokedex/loader-pika.gif" alt="" class="loader">
+            <div class="button">
+                <a href="figma-pokedex.html"> <img src="images/pokedex/figma-icon.png" alt="Icon Figma">Figma</a>
+            </div>
+            <div class="button">
+                <a href="pokedex.html">Pokedex</a>
+            </div>
         </section>
     </main>
-    <script>
-         const generations = {
 
-         range: [
-                    { from: 1, to: 151 },
-                    { from: 152, to: 251 },
-                    { from: 252, to: 386 },
-                    { from: 387, to: 493 },
-                    { from: 494, to: 649 },
-                    { from: 650, to: 721 },
-                    { from: 722, to: 809 },
-                    { from: 810, to: 890 },
-                    { from: 891, to: 1025 },
-                ]
-    }
-    const types = {
-
-                    normal:
-
-                        "#a8a77a",
-
-                    fire:
-
-                        "#ee8130",
-
-                    water:
-
-                        "#6390f0",
-
-                    electric:
-
-                        "#f7d02c",
-
-                    grass:
-
-                        "#7ac74c",
-
-                    ice:
-
-                        "#96d9d6",
-
-                    fighting:
-
-                        "#c22e28",
-
-                    poison:
-
-                        "#a33ea1",
-
-                    ground:
-
-                        "#e2bf65",
-
-                    flying:
-
-                        "#a98ff3",
-
-                    psychic:
-
-                        "#f95587",
-
-                    bug:
-
-                        "#a6891a",
-
-                    rock:
-
-                        "#b6a136",
-
-                    ghost:
-
-                        "#735797",
-
-                    dragon:
-
-                        "#6f35fc",
-
-                    dark:
-
-                        "#705746",
-
-                    steel:
-
-                        "#b7b7ce",
-
-                    fairy:
-
-                        "#d685ad",
-
-                    shadow: 
-                    
-                        "#5a5a5a",
-
-                    unknown: 
-                    
-                        "#68a090"
-                }
-
-                 const pkGeneration = document.querySelector('.pk-generation')
-                 
-         generations['range'].forEach((element, index) => {
-             pkGeneration.innerHTML += `<option value="${index}">Generation: ${++index} </option>`
-         })
-                // Events
-         pkGeneration.addEventListener('change', function(e) {
-             if(this.value != '') {
-                 loadPokemons(generations.range[this.value].from,
-             generations.range[this.value].to
-             )
-             }
-            
-         })
-
-        const pokemons = document.querySelector('.pokemons')
-        const loader = document.querySelector('.loader')
-        const loadPokemons = async (from, to) => {
-            loader.classList.remove('hide')
-            pokemons.classList.add('hide')
-            pokemons.innerHTML = `` 
-            setTimeout(() => {
-                loader.classList.add('hide')
-                pokemons.classList.remove('hide')
-            }, 4000)
-            for (let pk = from; pk <= to; pk++) {
-                const url = `https://pokeapi.co/api/v2/pokemon/${pk}`
-                const response = await fetch(url)
-                const data = await response.json()
-                const typeColor = data.types[0].type.name
-                
-                pokemons.innerHTML += `<li style="background-color: ${types[typeColor]}; border-color: ${types[typeColor]};"> ${data.id}
-                                        ${data.name} 
-                                        <img src="${data.sprites.front_default}" >
-                                        </li>`
-            }
-        }
-        loadPokemons(1, 151)
-    </script>
 </body>
 
 </html>
