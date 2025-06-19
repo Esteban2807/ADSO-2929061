@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Pokedex</title>
     <style>
-        h3 {
-            border-bottom: 0px solid #000;
-            text-decoration: none;
-        }
-
         #scene {
             width: 380px;
             height: 700px;
@@ -211,7 +205,6 @@
         }
     </style>
 </head>
-
 <body class="javascript">
     <nav>
       <a href="18-pokedex-api.html">
@@ -221,7 +214,6 @@
                     d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
             </svg></a>
     </nav>
-
     <main>
         <header>
             <h1>18 - Pokedex</h1>
@@ -241,17 +233,12 @@
                                 <path fill="#fbff00"
                                     d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                             </svg></a>
-
                         <img src="images/pokedex/logo.svg" alt="">
                         <select class="pk-generation">
                             <option value="">Selecciona una generación...</option>
-                        </select>
-                        
-                            <img src="images/pokedex/loader-pika.gif" alt="Cargando..." width="100" class="loader hide">
-                        
+                        </select>        
+                            <img src="images/pokedex/loader-pika.gif" alt="Cargando..." width="100" class="loader hide">                   
                             <ul class="pokemons hide">
-                           
-
                         </ul>
                     </div>
                     <div class="back hide" id="pkinfo">
@@ -266,7 +253,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
     </main>
     <script>
@@ -284,24 +270,18 @@
         const card = document.querySelector('#card');
         const escene = document.querySelector('#scene');
         const loader = document.querySelector('.loader');
-
-
-
         //Events
-
         toPK.addEventListener('click', (e) => {
             home.classList.add('hide')
             listPokemons.classList.remove('hide')
             escene.classList.remove('hide')
-
         })
-
         backHome.addEventListener('click', (e) => {
             home.classList.remove('hide')
             listPokemons.classList.add('hide')
             escene.classList.add('hide')
         })
-
+        //Funciones
         pokemons.addEventListener('click', (e) => {
             const li = e.target.closest('li.toInfoPK');
             if (li) {
@@ -318,7 +298,6 @@
                 pkInfo.classList.add('hide');
             }, 500);
         });
-
         //Objects
         const generations = {
             range: [
@@ -333,7 +312,6 @@
                 { from: 891, to: 1025 }
             ]
         }
-
         const types = {
             normal: "#a8a77a",
             fire: "#ee8130",
@@ -356,15 +334,12 @@
             shadow: "#5a5a5a",
             unknown: "#68a090",
         }
-
-
         generations['range'].forEach((element, index) => {
             pkGeneration.innerHTML += `<option value="${index}">Generation ${++index}</option>`
         });
         pkGeneration.addEventListener('change', function (e) {
             loadPokemon(generations.range[this.value].from, generations.range[this.value].to)
         })
-
         const loadPokemon = async (from, to) => {
             loader.classList.remove('hide')
             pokemons.classList.add('hide')
@@ -387,10 +362,6 @@
                                               <img src="${data.sprites.front_default}">
                                             </div>
                                          </li>`
-
-
-
-
             }
         }
          loadPokemon(1, 151)
@@ -399,19 +370,14 @@
             listPokemons.classList.add('hide');
             pkInfo.classList.remove('hide');
             infoPK.innerHTML = '<p style="color: white;">Cargando...</p>';
-
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             const data = await res.json();
-
             const color = types[data.types[0].type.name];
-
             const stats = data.stats.map(stat => ({
                 name: stat.stat.name,
                 value: stat.base_stat
             }));
-
             const typeIcon = `<img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/${data.types[0].type.name}.svg" width="40" />`;
-
             infoPK.innerHTML = `
   <div class="card-container">
     <div class="card">          
@@ -436,10 +402,7 @@
             requestAnimationFrame(() => {
                 document.querySelector('#pkinfo .card').classList.add('flipped');
             });
-
-
         }
-
         function renderStatBar(stat) {
             const colors = {
                 hp: 'limegreen',
@@ -449,7 +412,6 @@
                 'special-defense': 'navy',
                 speed: 'hotpink',
             };
-
             const nameMap = {
                 hp: 'HP',
                 attack: 'Atk',
@@ -458,9 +420,7 @@
                 'special-defense': 'SDef',
                 speed: 'Sp'
             };
-
             const percent = Math.min(100, (stat.value / 150) * 100).toFixed(0);
-
             return `
         <div style="margin-bottom: 0.4rem; text-align: left;">
             <span style="color:white;">${nameMap[stat.name] || stat.name}</span>
@@ -470,11 +430,9 @@
         </div>
     `;
         }
-
         function capitalize(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
-
         pokemons.addEventListener('click', (e) => {
             const li = e.target.closest('li.toInfoPK');
             if (li) {
@@ -482,12 +440,6 @@
                 showPokemonInfo(id);
             }
         });
-
-
-
-
-
     </script>
 </body>
-
 </html>
