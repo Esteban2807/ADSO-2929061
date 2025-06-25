@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,6 +102,7 @@
                         content: '';
                         display: none;
                     }
+
                     list-style: none;
                     margin: 0;
                     padding: 10px;
@@ -190,6 +192,7 @@
             }
 
         }
+
         .loader {
             display: flex;
             justify-content: center;
@@ -198,16 +201,18 @@
             justify-self: center;
             height: 100px;
             width: auto;
-            &.hide{
+
+            &.hide {
                 content: '';
                 display: none;
             }
         }
     </style>
 </head>
+
 <body class="javascript">
     <nav>
-      <a href="18-pokedex-api.html">
+        <a href="18-pokedex-api.html">
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path fill="#ffffff"
@@ -236,9 +241,9 @@
                         <img src="images/pokedex/logo.svg" alt="">
                         <select class="pk-generation">
                             <option value="">Selecciona una generación...</option>
-                        </select>        
-                            <img src="images/pokedex/loader-pika.gif" alt="Cargando..." width="100" class="loader hide">                   
-                            <ul class="pokemons hide">
+                        </select>
+                        <img src="images/pokedex/loader-pika.gif" alt="Cargando..." width="100" class="loader hide">
+                        <ul class="pokemons hide">
                         </ul>
                     </div>
                     <div class="back hide" id="pkinfo">
@@ -344,10 +349,10 @@
             loader.classList.remove('hide')
             pokemons.classList.add('hide')
             pokemons.innerHTML = ''
-            setTimeout(()=>{
+            setTimeout(() => {
                 loader.classList.add('hide')
                 pokemons.classList.remove('hide')
-            },4000)
+            }, 4000)
             for (let pk = from; pk <= to; pk++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${pk}`
                 const response = await fetch(url)
@@ -364,7 +369,7 @@
                                          </li>`
             }
         }
-         loadPokemon(1, 151)
+        loadPokemon(1, 151)
         // Mostrar detalle del Pokémon
         async function showPokemonInfo(id) {
             listPokemons.classList.add('hide');
@@ -442,4 +447,5 @@
         });
     </script>
 </body>
+
 </html>
