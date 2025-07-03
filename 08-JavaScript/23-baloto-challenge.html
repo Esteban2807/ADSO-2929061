@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23-balloto-challenge</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        div.logo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            img {
+                mix-blend-mode: multiply;
+                width: 300px;
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+        .numbers {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 400px;
+            .row3 {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2.5rem;
+                .number1 {
+                    transform: translateX(-600%);
+                }
+                .number2 {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
+                    height: 100px;
+                    margin-top: 20px;
+                    font-size: 2rem;
+                    transform: translateY(1000%);
+                }
+                .number3 {
+                    transform: translateX(1000%);
+                }
+            }
+            .row2 {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2.5rem;
+                .number4{
+                    transform: translate(-1000%,600%);
+                }
+                .number5{
+                    transform: translate(1000%,-600%);
+                }
+            }
+            .row1 {
+                .number6 {
+                    transform: translateY(1000%);
+                }
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .number {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: rgb(202, 52, 41);
+                background: url(images/baloto/dball.png) no-repeat center;
+                background-size: cover;
+                font-size: 1.5rem;
+                text-shadow: 3px;
+                font-weight: bold;
+                width: 75px;
+                height: 75px;
+                transition: ease-in all 2s;
+            }
+        }
+        button {
+            width: 100%;
+            padding: 50px;
+            margin: 30px;
+            background-color: #da7518;
+            color: rgb(202, 52, 41);
+            border: none;
+            box-shadow: 10px 10px;
+            transition: all ease-in 0.4s;
+            &:hover {
+                box-shadow: 5px 5px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+
+<body class="javascript">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg></a>
+    </nav>
+    <main>
+        <header>
+            <h1>23-balloto-challenge</h1>
+            <h2>Simulate a lottery number generator</h2>
+        </header>
+        <section>
+            <div class="logo"><img src="images/baloto/logo.png" alt="Logo"></div>
+
+            <div class="numbers">
+                <div class=" row row1">
+                    <div class="number number6"></div>
+
+                </div>
+                <div class=" row row2">
+                    <div class="number number4"></div>
+                    <div class="number number5"></div>
+                </div>
+                <div class=" row row3">
+                    <div class="number number1"></div>
+                    <div class="number number2"></div>
+                    <div class="number number3"></div>
+                </div>
+
+
+            </div>
+            <button>¡Jugar!</button>
+        </section>
+    </main>
+    <script>
+        //Elements
+        const numbers = document.querySelectorAll('.number');
+        const button = document.querySelector('button');
+        const number = document.querySelectorAll('.number');
+        const number1 = document.querySelector('.number1');
+        const number2 = document.querySelector('.number2');
+        const number3 = document.querySelector('.number3');
+        const number4 = document.querySelector('.number4');
+        const number5 = document.querySelector('.number5');
+        const number6 = document.querySelector('.number6');
+
+        //Functions
+        const generateNumber = () => {
+            return Math.floor(Math.random() * 100);
+        };
+        //Events
+        button.addEventListener('click', () => {
+            setTimeout(() => {
+                numbers.forEach(number => {
+                    number.textContent = generateNumber();
+                    number.style.transform = "translate(0)"
+                })
+            }, 4000)
+        });
+
+
+    </script>
+</body>
+
+</html>
