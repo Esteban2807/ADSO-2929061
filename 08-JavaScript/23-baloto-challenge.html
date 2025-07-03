@@ -8,21 +8,31 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+        * {
+            font-family: "Potta One" , system-ui;
+        }
         section {
+            width: 380px;
+            height: 640px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            background: url(images/baloto/fondo.png) center no-repeat;
+            background-size: contain;
+            background-color: transparent !important;
+            
         }
         div.logo {
             display: flex;
             flex-direction: column;
             justify-content: center;
             img {
-                mix-blend-mode: multiply;
-                width: 300px;
-                height: 200px;
+                width: 274px;
+                height: 241px;
                 object-fit: cover;
             }
         }
@@ -45,6 +55,9 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    border: #bd3a29 solid 4px;
+                    background-color: #bd3a29;
+                    border-radius: 60%;
                     width: 100px;
                     height: 100px;
                     margin-top: 20px;
@@ -94,17 +107,23 @@
                 width: 75px;
                 height: 75px;
                 transition: ease-in all 2s;
+                text-decoration: underline;
             }
         }
         button {
-            width: 100%;
+            border-radius: 40px;
+            width: 320px;
+            height: 60px;
+            text-align: center;
             padding: 50px;
             margin: 30px;
+            font-family: "Potta One", system-ui;
             background-color: #da7518;
             color: rgb(202, 52, 41);
             border: none;
             box-shadow: 10px 10px;
             transition: all ease-in 0.4s;
+            font-size: 24px;
             &:hover {
                 box-shadow: 5px 5px;
                 cursor: pointer;
@@ -147,7 +166,7 @@
 
 
             </div>
-            <button>¡Jugar!</button>
+            <button>¡JUGAR!</button>
         </section>
     </main>
     <script>
@@ -164,16 +183,18 @@
 
         //Functions
         const generateNumber = () => {
-            return Math.floor(Math.random() * 100);
+            return  
+            
         };
         //Events
         button.addEventListener('click', () => {
             setTimeout(() => {
                 numbers.forEach(number => {
-                    number.textContent = generateNumber();
+                    number.textContent = (Math.floor(Math.random() * 42)) + 1;
+                    number2.textContent = (Math.floor(Math.random() * 16)) + 1;
                     number.style.transform = "translate(0)"
                 })
-            }, 4000)
+            },)
         });
 
 
