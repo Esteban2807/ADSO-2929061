@@ -4,129 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>23-balloto-challenge</title>
+    <title>01-write</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
-
         * {
-            font-family: "Potta One" , system-ui;
+            box-sizing:content-box;
         }
-        section {
-            width: 380px;
-            height: 640px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: url(images/baloto/fondo.png) center no-repeat;
-            background-size: contain;
-            background-color: transparent !important;
-            
+    section{
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        justify-content: center;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: 1px #000 solid;
+        border-radius: 10px;
+        padding: 1rem;
+        width: 200px;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border: #000 2px solid;
         }
-        div.logo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            img {
-                width: 274px;
-                height: 241px;
-                object-fit: cover;
-            }
-        }
-        .numbers {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 400px;
-            .row3 {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 2.5rem;
-                .number1 {
-                    transform: translateX(-600%);
-                }
-                .number2 {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    border: #bd3a29 solid 4px;
-                    background-color: #bd3a29;
-                    border-radius: 60%;
-                    width: 100px;
-                    height: 100px;
-                    margin-top: 20px;
-                    font-size: 2rem;
-                    transform: translateY(1000%);
-                }
-                .number3 {
-                    transform: translateX(1000%);
-                }
-            }
-            .row2 {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 2.5rem;
-                .number4{
-                    transform: translate(-1000%,600%);
-                }
-                .number5{
-                    transform: translate(1000%,-600%);
-                }
-            }
-            .row1 {
-                .number6 {
-                    transform: translateY(1000%);
-                }
-            }
-            .row {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .number {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                color: rgb(202, 52, 41);
-                background: url(images/baloto/dball.png) no-repeat center;
-                background-size: cover;
-                font-size: 1.5rem;
-                text-shadow: 3px;
-                font-weight: bold;
-                width: 75px;
-                height: 75px;
-                transition: ease-in all 2s;
-                text-decoration: underline;
-            }
-        }
-        button {
-            border-radius: 40px;
-            width: 320px;
-            height: 60px;
-            text-align: center;
-            
-            margin: 30px;
-            font-family: "Potta One", system-ui;
-            background-color: #da7518;
-            color: rgb(202, 52, 41);
-            border: none;
-            box-shadow: 10px 10px;
-            transition: all ease-in 0.4s;
-            font-size: 24px;
-            &:hover {
-                box-shadow: 5px 5px;
-                cursor: pointer;
+    }    
+        a {
+            color: #000;
+                text-decoration: none;
+            img{
+                width: 20px;
+                
             }
         }
     </style>
@@ -143,62 +55,19 @@
     </nav>
     <main>
         <header>
-            <h1>23-balloto-challenge</h1>
-            <h2>Simulate a lottery number generator</h2>
+            <h1>Baloto Challenge Figma & Web</h1>
+            <h2>Dentro de está pagina podrás navegar entre el diseño Figma y el marcado del Challenge de Baloto</h2>
         </header>
         <section>
-            <div class="logo"><img src="images/baloto/logo.png" alt="Logo"></div>
-
-            <div class="numbers">
-                <div class=" row row1">
-                    <div class="number number6"></div>
-
-                </div>
-                <div class=" row row2">
-                    <div class="number number4"></div>
-                    <div class="number number5"></div>
-                </div>
-                <div class=" row row3">
-                    <div class="number number1"></div>
-                    <div class="number number2"></div>
-                    <div class="number number3"></div>
-                </div>
-
-
+            <div class="button">
+                <a href="figma-baloto.html"> <img src="images/pokedex/figma-icon.png" alt="Icon Figma">Figma</a>
             </div>
-            <button>¡JUGAR!</button>
+            <div class="button">
+                <a href="baloto.html">Web</a>
+            </div>
         </section>
     </main>
-    <script>
-        //Elements
-        const numbers = document.querySelectorAll('.number');
-        const button = document.querySelector('button');
-        const number = document.querySelectorAll('.number');
-        const number1 = document.querySelector('.number1');
-        const number2 = document.querySelector('.number2');
-        const number3 = document.querySelector('.number3');
-        const number4 = document.querySelector('.number4');
-        const number5 = document.querySelector('.number5');
-        const number6 = document.querySelector('.number6');
 
-        //Functions
-        const generateNumber = () => {
-            return  
-            
-        };
-        //Events
-        button.addEventListener('click', () => {
-            setTimeout(() => {
-                numbers.forEach(number => {
-                    number.textContent = (Math.floor(Math.random() * 42)) + 1;
-                    number2.textContent = (Math.floor(Math.random() * 16)) + 1;
-                    number.style.transform = "translate(0)"
-                })
-            },)
-        });
-
-
-    </script>
 </body>
 
 </html>
