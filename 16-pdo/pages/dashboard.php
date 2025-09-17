@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico.ico" type="image/x-icon">
     <title>Tu mejor amigo en casa - Dashboard</title>
     <link rel="stylesheet" href="<?=$css?>stylee.css">
 </head>
@@ -39,19 +40,25 @@
                     <div class="controls">
                         <a href="show.php?id=<?=$pet['id']?>" class="show"></a>
                         <a href="edit.php?id=<?=$pet['id']?>" class="edit"></a>
-                        <a href="javascript:deletePet(=<?=$pet['id']?>, '=<?=$pet['name']?>')" class="delete"></a>
+                        <a href="javascript:deletePet(<?=$pet['id']?>,'<?=$pet['name']?>')" class="delete"></a>
                     </div>
                </td>
            </tr>
-        <?php endforeach  ?>    
-
-        <?php
-        if(isset($_SESSION['message'])) {
-                include 'messages.php';
+        <?php endforeach  ?> 
+        <?php 
+            if(isset($_SESSION['message'])) {
+                include 'message.php';
                 unset($_SESSION['message']);
             }
-        ?>
+        ?>   
        </table>
     </main>
+    <script>
+        function deletePet(id,name) {
+            if(confirm(`Esta usted seguro? Va a eliminar a ${name}`)){
+                window.location.replace('delete.php?id='+id)
+            }
+        }
+    </script>
 </body>
 </html>
