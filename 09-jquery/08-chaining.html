@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>08-chaining</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/styles.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         button.btn {
             display: flex;
@@ -65,6 +66,29 @@
             </article>
         </section>
     </main>
+    <script>
+        
+// 08
+
+$(document).ready(function() {
+            $('.btn').click(function(e) {
+                $(this).css({
+                        'opacity': '0.5',
+                        'pointer-events': 'none'
+                })
+                $('.goku').animate({'left': '200px'}, 2000)
+                          .animate({'top': '180px'}, 2000)
+                          .animate({'left': '10px'}, 2000)
+                          .animate({'top': '10px'}, 2000, function() {
+                                $('.btn').css({
+                                    'opacity': '1',
+                                    'pointer-events': 'all'
+                                })
+                          })
+            })
+        })
+
+    </script>
 </body>
 
 </html>

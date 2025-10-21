@@ -7,13 +7,15 @@
     <title>03-todolist</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+
     <style>
         div.todolist {
             background-color: #fff;
             border-radius: 0.4rem;
             padding: 1rem;
             margin: 1rem auto;
-            width: 370px;
+            width: 340px;
 
             div.header {
                 h1 {
@@ -60,12 +62,15 @@
                     color: #333;
                     padding-block: 0.8rem;
                     align-items: center;
-
+                    p{
+                        color: #000;
+                    }
                     &.checked {
                         background-color: #ff03 !important;
 
                         p {
                             text-decoration: line-through;
+                            color: #000;
                         }
                     }
 
@@ -190,6 +195,81 @@
             </div>
         </section>
     </main>
+    <script>
+        
+// 03
+
+$(document).ready(function() {
+
+            // Check localStorage
+            if (localStorage.getItem('todolist') != null) {
+                $('.list').html(localStorage.getItem('todolist'))
+                countTasks()
+                countRemains()
+            } else {
+                // Count Tasks & Remains
+                countTasks()
+                countRemains()
+            }
+
+            // Add task
+            $('#add').click(function() {
+                if($('#input-task').val().length > 0) {
+                    $('.list').append(`<article>
+                                            <input type="checkbox">
+                                            <p>${$('#input-task').val()}</p>
+                                            <button>&times;</button>
+                                        </article>`)
+                    $('#input-task').val('')
+                    countTasks()
+                    countRemains()
+                } else {
+                    alert('Please: Enter a Task')
+                }
+            })
+
+            // Check Remain
+            $('.list').on('click', 'input:checkbox', function () {
+                if($(this).prop('checked')) {
+                    $(this).attr('checked', true)
+                    $(this).parent().addClass('checked')
+                } else {
+                    $(this).attr('checked', false)
+                    $(this).parent().removeClass('checked')
+                }
+                countRemains()
+            })
+
+            // Check Remain
+            $('.list').on('click', 'article button', function () {
+                 $(this).closest('article').remove()
+                 countTasks()
+                 countRemains()
+            })
+
+            // Reset Tasks
+            $('#reset').click(function() {
+                localStorage.setItem('todolist', $('.list').html(''))
+                countTasks()
+                countRemains()
+            })
+
+            // Count Tasks
+            function countTasks() {
+                $('.num-tasks').text($('article').length)
+                $('.title-tasks').text($('article').length > 1 ? 'Tasks' : 'Task')
+            }
+
+            // Count Remains
+            function countRemains() {
+                $remain = Math.abs($('.checked').length - $('article').length)
+                $('.num-remains').text($remain)
+                $('.title-remains').text($remain > 1 ? 'Remains' : 'Remain')
+                // Save All Tasks
+                localStorage.setItem('todolist', $('.list').html())
+            }
+        })
+    </script>
 </body>
 
 </html>

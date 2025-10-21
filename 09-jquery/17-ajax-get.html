@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>17-ajax-get</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <style>
         select {
             display: block;
@@ -49,6 +50,32 @@
             <select class="references form-select"></select>
         </section>
     </main>
+    <script>
+        
+//17 
+
+$(document).ready(function() {
+			$('.references').hide();
+			$('.loader').hide();
+			// Events
+			$('.brands').change(function(event) {
+				$brn = $(this).val();
+				if ($brn.length > 0) {
+					$('.loader').show();
+					$('.references').hide();
+					// GET
+					$.get('php/references.php', { brn: $brn }, function(data) {
+						setTimeout(function() {
+							$('.loader').hide();
+							$('.references').fadeIn(1000).html(data);
+						},1000);
+					});
+				} else {
+					$('.references').hide();
+				}
+			});
+        });
+    </script>
 </body>
 
 </html>

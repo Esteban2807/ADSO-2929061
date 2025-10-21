@@ -559,7 +559,10 @@ body.jquery {
       height: 200px;
     }
   }
-
+  section{
+    width: 100%;
+  }
+  
   p {
     color: rgb(47, 255, 245);
     font-size: 1.4rem;

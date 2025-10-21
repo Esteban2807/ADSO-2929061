@@ -7,9 +7,10 @@
     <title>01-install</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <style>
-        .install {
-            background-color: #73b873;
+        body main section p.install {
+            background-color: #18b2ce;
             border-radius: 0.2rem;
             color: #152115;
             margin: 2rem auto;
@@ -37,6 +38,12 @@
             <p class="install"></p>
         </section>
     </main>
+    <script>
+        // 01
+        $(document).ready(function () {
+            $('.install').text('✅ JQuery was Installed Succes')
+        })
+    </script>
 </body>
 
 </html>

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>07-callback</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/styles.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         button.btn {
             display: flex;
@@ -65,6 +66,29 @@
             </figure>
         </section>
     </main>
+    <script>
+        
+// 07
+
+$(document).ready(function() {
+            $('.btn').click(function(e) {
+                $(this).css({
+                    'opacity': '0.5',
+                    'pointer-events': 'none'
+                })
+                $('figcaption').text('Animation Started')
+                $('.character').animate({'left': '160px'}, 2000, function() {
+                    $('.character').animate({'left': '-60px'}, 2000, function() {
+                        $('figcaption').text('Animation Finished')
+                        $('.btn').css({
+                            'opacity': '1',
+                            'pointer-events': 'all'
+                        })
+                    })
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

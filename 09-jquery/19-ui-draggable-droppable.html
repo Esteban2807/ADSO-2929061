@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>19-ui-draggable-droppable</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <style>
         figure.landscape {
             background: url(images/bg-pokemon.png) no-repeat center;
@@ -87,6 +89,39 @@
             </figure>
         </section>
     </main>
+    <script>
+        
+// 19
+
+$(document).ready(function() {
+            $('div.drag').draggable({
+				containment: '.landscape',
+				cursor: 'move',
+				snap: '.pk',
+				snapMode: 'inner',
+				revert: 'invalid'
+			});
+			$('div.bulbassaur').droppable({
+				accept: '.drag',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+			$('div.venussaur').droppable({
+				accept: '.superball',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+        });
+
+    </script>
 </body>
 
 </html>
