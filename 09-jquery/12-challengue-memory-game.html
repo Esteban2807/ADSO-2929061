@@ -1,26 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12-challengue-memory-game</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <script src="js/jquery-3.7.1.min.js"></script>
-        <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        * {
+            box-sizing: content-box;
+        }
+
+        section {
+            display: flex;
+            flex-direction: row;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border: 1px #000 solid;
+            border-radius: 10px;
+            padding: 1rem;
+            width: 200px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #f0f0f0;
+                cursor: pointer;
+                border: #000 2px solid;
+            }
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+
+            img {
+                width: 20px;
+
+            }
+        }
+    </style>
 </head>
-    <body class="jquery">
-            <nav>
-                <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>            </nav>
-                </a>
-        <main>
-            <header>
-                <h1>12-challengue-memory-game</h1>
-                <h2>Construye un juego de memoria usando jQuery. </h2>
-            </header>
-            <section>
-                
-            </section>
-        </main>
-    </body>
+
+<body class="jquery">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+    </nav>
+    </a>
+    <main>
+        <header>
+            <h1>12-challengue-memory-game</h1>
+            <h2>Construye un juego de memoria usando jQuery. </h2>
+        </header>
+        <section>
+            <div class="button">
+                <a href="challenge-12/figma.html"> <img src="../08-JavaScript/images/pokedex/figma-icon.png"
+                        alt="Icon Figma">Figma</a>
+            </div>
+            <div class="button">
+                <a href="challenge-12/index.html">Memorama</a>
+            </div>
+        </section>
+    </main>
+</body>
+
 </html>

@@ -12,10 +12,28 @@
         matchedPairs: 0,  // Contador de pares encontrados
         totalPairs: images.length, // Total de pares esperados
         delayTime: 2000, // Tiempo en milisegundos para mostrar todas las cartas
+        gameTime: 0,      // Nuevo: Almacena el tiempo en segundos
+        timerInterval: null, // Nuevo: Para almacenar el ID del intervalo del temporizador
+        failedPairs: 0,   // Nuevo: Contador de pares fallidos
 
         init: function() {
             this.setupGame();
             this.setupRearrangeButton(); // Nueva llamada para configurar el botón
+			  this.showCardsOnStart(); // <-- AÑADE ESTA LÍNEA
+            // También inicia los contadores si los quieres desde el inicio
+            this.setupTimer();     // <-- Nueva llamada para el temporizador
+            this.setupFailedPairsCounter(); // <-- Nueva llamada para el contador de fallos
+        },
+		showCardsOnStart: function() {
+            const self = this;
+            // Deshabilitar los clicks mientras las cartas se muestran
+            $('.memory-card').off('click');
+
+            $('.memory-card').addClass('flip'); // Voltear todas las cartas
+            setTimeout(function() {
+                $('.memory-card').removeClass('flip'); // Volver a voltearlas
+                self.assignClickEvents(); // Re-habilitar los eventos de click
+            }, this.delayTime); // Usa el delayTime configurado (2000ms = 2 segundos)
         },
 
         setupGame: function() {
@@ -81,13 +99,40 @@
                 this.unflipCards();
             }
         },
+		 setupTimer: function() {
+            const self = this;
+            // Limpia cualquier temporizador anterior si el juego se reinicia
+            if (this.timerInterval) {
+                clearInterval(this.timerInterval);
+            }
+            this.gameTime = 0; // Reinicia el tiempo
+            $('#gameTimer').text('00:00'); // Muestra el tiempo inicial
 
+            this.timerInterval = setInterval(function() {
+                self.gameTime++;
+                const minutes = Math.floor(self.gameTime / 60);
+                const seconds = self.gameTime % 60;
+                const formattedTime =
+                    (minutes < 10 ? '0' : '') + minutes + ':' +
+                    (seconds < 10 ? '0' : '') + seconds;
+                $('#gameTimer').text(formattedTime);
+            }, 1000); // Actualiza cada segundo
+        },
+
+        // Función para detener el temporizador (llamada cuando el juego termina)
+        stopTimer: function() {
+            if (this.timerInterval) {
+                clearInterval(this.timerInterval);
+                this.timerInterval = null;
+            }
+        },
         disableCards: function() {
             this.flippedCards.forEach(card => card.addClass('matched').off('click'));
             this.flippedCards = [];
             this.matchedPairs++;
 
             if (this.matchedPairs === this.totalPairs) {
+				this.stopTimer(); // <-- DETENER EL TEMPORIZADOR AL GANAR
                 alert('¡Felicidades, has encontrado todos los pares!');
                 // Aquí podrías añadir lógica para reiniciar el juego automáticamente o un botón de reinicio
             }
@@ -96,6 +141,8 @@
         unflipCards: function() {
             this.flippedCards.forEach(card => card.removeClass('flip'));
             this.flippedCards = [];
+			this.failedPairs++; // <-- INCREMENTAR PARES FALLIDOS AQUI
+			$('#failedPairsCounter').text(this.failedPairs);
         },
 
         // --- NUEVAS FUNCIONES ---
@@ -121,6 +168,10 @@
             // Resetear el estado del juego
             this.flippedCards = [];
             this.matchedPairs = 0;
+			  this.failedPairs = 0; // <-- RESETEAR PARES FALLIDOS AQUI
+            $('#failedPairsCounter').text(this.failedPairs); // Actualizar el display
+            this.stopTimer(); // Detener el temporizador anterior
+            this.setupTimer(); // Iniciar un nuevo temporizador
 
             // 4. Mostrar todas las cartas brevemente
             this.showAllCardsBriefly();
