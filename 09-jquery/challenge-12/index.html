@@ -5,33 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorama</title>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-	<link href="css/jquery.memory-game.css" rel="stylesheet">
+    <link href="css/jquery.memory-game.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <style>
-        section{
+        section {
             justify-content: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            div.game-stats{
+
+            div.game-stats {
                 display: flex;
                 flex-direction: row;
                 gap: 5rem;
-                p{
+
+                p {
                     color: #fff;
                     font-size: large;
                     border-radius: 20px;
-                    padding: 5px 10px ;
-                    span{
+                    padding: 5px 10px;
+
+                    span {
                         font-weight: 800;
                     }
                 }
-                & p:first-child{
+
+                & p:first-child {
                     background-color: #781717;
                 }
-                & p:last-child{
+
+                & p:last-child {
                     background-color: #1E2066;
                 }
             }
@@ -61,10 +64,11 @@
             <div class="memory-game">
             </div>
             <button id="rearrangeButton" class="rearrange-button">REFRESH</button>
-            <script src="js/jquery.memory-game.js"></script>
         </section>
     </main>
-
+    <script src="js/jquery.memory-game.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
 </body>
 
 </html>
