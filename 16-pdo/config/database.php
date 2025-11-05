@@ -166,13 +166,14 @@ function deletePet($id, $conx)
 function editPet($id ,$name, $specie_id, $breed_id, $sex_id, $conx)
 {
     try {
-        $sql = "UPDATE pets SET name = :name, specie_id = :specie_id, breed_id = :breed_id, sex_id = :sex_id WHERE id = :id";
+        $sql = "UPDATE pets SET name = :name, specie_id = :specie_id, breed_id = :breed_id, sex_id = :sex_id WHERE id = :id;";
         $stmt = $conx->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':specie_id', $specie_id);
         $stmt->bindParam(':breed_id', $breed_id);
         $stmt->bindParam(':sex_id', $sex_id);
         $stmt->bindParam(':id', $id);
+        $stmt->execute();
         if ($stmt->execute()) {
             return true;
         } else {

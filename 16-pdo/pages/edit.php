@@ -3,7 +3,6 @@
     include '../config/database.php';
     include '../config/security.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +23,9 @@
             $pet = showPet($_GET['id'], $conx);
         ?>
         <figure class="photo-preview">
-            <img src="../uploads/<?=$pet['photo']?>" alt="">
+            <img id="preview" src="../uploads/<?=$pet['photo']?>" alt="">
         </figure>
-        <form action="" method="post">
+        <form action="" method="POST">
             <input type="hidden" name="idPet" value="<?php echo $_GET['id'] ?>">
             <input type="text" name="name" placeholder="Nombre" value="<?= $pet['name'];?>">
            <div class="select">
@@ -69,7 +68,7 @@
                 }
             }
             if ($errors == 0) {
-                $id        = $_POST['id'] ;
+                $id        = $_POST['idPet'] ;
                 $name      = $_POST['name'];
                 $specie_id = $_POST['specie_id'];
                 $breed_id  = $_POST['breed_id'];
