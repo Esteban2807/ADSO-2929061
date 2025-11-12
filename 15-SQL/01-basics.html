@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-basics</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        main section {
+            color: #fff;
+        }
+
+        section {
+            pre {
+                background-color: #15316d;
+                border: none;
+                border-radius: 0.4rem;
+                outline: none;
+                padding: 0.4rem;
+                color: #fff;
+                width: 100%;
+                min-height: 32px;
+                font-size: 0.8rem;
+                resize: none;
+                field-sizing: content
+            }
+        }
+    </style>
+</head>
+
+<body class="sql">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+    </nav>
+    </a>
+    <main>
+        <header>
+            <h1>01-basics</h1>
+            <h2></h2>
+        </header>
+        <section>
+
+            <h3>Show Version SQL</h3>
+            <pre> >mysql --version</pre>
+
+
+            <h3>Acces to MySQL</h3>
+            <pre> >mysql -u root -p</pre>
+
+            <h3>Show All Databases</h3>
+            <pre> >>SHOW DATABASES; </pre>
+
+            <h3>Create Database</h3>
+            <pre> >>CREATE DATABASE database_name; </pre>
+
+            <h3>Use Database</h3>
+            <pre> >>USE database_name;</pre>
+
+            <h3>Connect Database</h3>
+            <pre> >> connect database_name;</pre>
+
+            <h3>Create Table</h3>
+            <pre> >>CREATE TABLE gynms(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(32) NOT NULL ,
+    created_at TIMESTAMP
+);</pre>
+
+            <h3>Create Copy</h3>
+            <pre> >mysqldump -u root database_name > path/name_file.sql</pre>
+
+            <h3>Use Copy</h3>
+            <pre> >mysql -u root -p database_name <pre path/name_file.sql </pre>
+
+        </section>
+    </main>
+</body>
+
+</html>

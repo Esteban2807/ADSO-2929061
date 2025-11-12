@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-DDL</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+   <style>
+        main section {
+            color: #fff;
+        }
+
+        section {
+            pre {
+                background-color: #15316d;
+                border: none;
+                border-radius: 0.4rem;
+                outline: none;
+                padding: 0.4rem;
+                color: #fff;
+                width: 100%;
+                min-height: 32px;
+                font-size: 0.8rem;
+                resize: none;
+                field-sizing: content
+            }
+        }
+    </style>
+</head>
+
+<body class="sql">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+    </nav>
+    </a>
+    <main>
+        <header>
+            <h1>02-DDL</h1>
+            <h2>Data Definition Lenguage</h2>
+        </header>
+        <section>
+            <h3>CREATE TABLE pokemons</h3>
+            <pre>
+CREATE TABLE pokemons (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(32) NOT NULL UNIQUE,
+  tipo varchar(32) NOT NULL,
+  strenght int(11) NOT NULL,
+  stamina int(11) NOT NULL,
+  speed int(11) NOT NULL,
+  accuracy int(11) NOT NULL,
+  trainer_id int(11) NOT NULL,
+  created_at timestamp NOT NULL,
+   FOREIGN KEY trainer_id REFERENCE trainers(id)
+);              
+            </pre>
+            <h3>SHOW CONSTRAINT FK</h3>
+            <pre> SHOW CREATE TABLE pokemons; </pre>
+            <h3>ALTER TABLE ADD FK</h3>
+            <pre>ALTER TABLE pokemons  ADD FOREIGN KEY(trainer_id);
+            </pre>
+            <h3>ALTER TABLE RENAME:</h3>
+            <pre>ALTER TABLE pokemons RENAME digimons;</pre>
+            <h3>ALTER TABLE RENAME COLUMNS:</h3>
+            <pre>ALTER TABLE pokemons RENAME COLUMN stamina </pre>
+            <h3>ALTER TABLE ADD COLUMN:</h3>
+            <pre>ALTER TABLE pokemons  ADD COLUMN color VARCHAR(10);
+            </pre>
+            <h3>DROP TABLE</h3>
+            <pre>DROP TABLE pokemons</pre>
+            <h3>ALTER TABLE DROP COLUMN:</h3>
+            <pre>ALTER TABLE pokemons  DROP COLUMN color;
+            </pre>
+            <h3>ALTER TABLE ADD COLUMNS AFTER COLUMNS:</h3>
+            <pre>ALTER TABLE pokemons ADD COLUMN color INT NOT NULL AFTER COLUMN speed;</pre>
+        </section>
+    </main>
+</body>
+
+</html>
