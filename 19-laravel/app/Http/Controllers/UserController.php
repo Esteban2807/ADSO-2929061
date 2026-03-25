@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(12);
+        $users = User::orderBy('id', 'desc')->paginate(12);
         return view('users.index')->with('users', $users);
     }
 
@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -29,7 +29,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'document' => ['required', 'numeric',  'unique:'.User::class],
+            'fullname' => ['required', 'string'],
+            'gender' => ['required'],
+            'birthdate' => ['required', 'date'],
+            'phone' => ['required'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed'],
+        ]);
+        if($validation){
+            // dd($request->all());
+            if($request->hasfile('photo')){
+                $photo ='images/'.time().'.'.$request->photo->extension();
+                $request->photo->move(public_path('images'), $photo);
+            }
+            $user = new User;
+            $user->document = $request->document;
+            $user->fullname = $request->fullname;
+            $user->gender = $request->gender;
+            $user->birthdate = $request->birthdate;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->photo = $photo;
+            
+            if($user->save()){
+                return redirect('users')->with('message','The User '. $user->fullname .' was created successfully');
+            }
+        }
     }
 
     /**
@@ -37,7 +65,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -45,7 +73,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -53,14 +81,44 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $validation = $request->validate([
+            'document' => ['required', 'numeric', 'unique:'.User::class.' document,'.$user->id],
+            'fullname' => ['required', 'string'],
+            'gender' => ['required'],
+            'birthdate' => ['required', 'date'],
+            'phone' => ['required'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class.' email,'.$user->id],
+            'password' => ['required', 'confirmed'],
+        ]);
+        if($validation){
+            // dd($request->all());
+            if($request->hasfile('photo')){
+                $photo ='images/'.time().'.'.$request->photo->extension();
+                $request->photo->move(public_path('images'), $photo);
+                if($request->originphoto != 'images/no-photo.jpg' && file_exists(public_path($request->originphoto))){
+                    unlink(public_path($request->originphoto));
+                }
+            }
+            $user->document = $request->document;
+            $user->fullname = $request->fullname;
+            $user->gender = $request->gender;
+            $user->birthdate = $request->birthdate;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
         //
     }
-
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
     {
         //
+        if($user->photo != 'images/no-photo.jpg' && file_exists(public_path($user->photo))){
+            unlink(public_path($user->photo));
+        }
+        if($user->delete()){
+            return redirect('users')->with('message','The User '. $user->fullname .' was deleted successfully');
+        }
     }
 }
