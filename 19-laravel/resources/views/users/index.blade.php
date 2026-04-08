@@ -71,7 +71,7 @@
         </tr>
 
     </thead>
-    <tbody>
+    <tbody class="datalist">
         @foreach ($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
@@ -131,6 +131,12 @@
         </script>
     @endif
     <script>
+        $('.btn-import').click(function(e){
+            $('#file').click();
+        })
+        $('#file').change(function(){
+            $(this).parent().submit()
+        })
         $('.btn-delete').click(function(){
             let name = $(this).data('fullname');
             Swal.fire({
@@ -147,5 +153,44 @@
                 }
             });
         });
+        // Search
+        function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
+            }
+            const search = debounce(function(query) {
+                
+                $token = $('input[name=_token]').val()
+                
+                $.post("search/users", {'q': query, '_token': $token},
+                    function (data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
+            $('body').on('input', '#qsearch', function(event) {
+                event.preventDefault()
+                const query = $(this).val()
+                
+                $('.datalist').html(`<tr>
+                                        <td colspan="7" class="text-center py-18">
+                                            <span class="loading loading-spinner loading-xl"></span>
+                                        </td>
+                                    </tr>`)
+                if(query != '') {
+                    search(query)
+                } else {
+                    setTimeout(() => {
+                        window.location.replace('users')
+                    }, 500)
+                }
+            })
     </script>
 @endsection

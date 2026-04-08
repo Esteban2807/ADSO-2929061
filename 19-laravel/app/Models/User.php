@@ -57,4 +57,10 @@ class User extends Authenticatable
     public function adoptions() {
         return $this->hasMany(Adoption::class);
     }
+    public function scopenames($users,$q){
+        if(trim($q)) {
+            $users->where('fullname','LIKE',"%$q%")
+            ->orWhere('email','LIKE',"%$q%");
+        }
+    }
 }
