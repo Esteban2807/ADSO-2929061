@@ -70,9 +70,9 @@
                 <label class="label text-white">Kind:</label>
                 <select name="kind" class="select bg-[#0009] outline-0">
                     <option value="">Select...</option>
-                    <option value="Dog" @if(old('kind') == 'Dog') selected @endif>Dog</option>
-                    <option value="Cat" @if(old('kind') == 'Cat') selected @endif>Cat</option>
-                    <option value="Bird" @if(old('kind') == 'Bird') selected @endif>Bird</option>
+                    <option value="Perro" @if(old('kind') == 'Perro') selected @endif>Perro</option>
+                    <option value="Gato" @if(old('kind') == 'Gato') selected @endif>Gato</option>
+                    <option value="Ave" @if(old('kind') == 'Ave') selected @endif>Ave</option>
                 </select>
                 @error('kind')
                     <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>

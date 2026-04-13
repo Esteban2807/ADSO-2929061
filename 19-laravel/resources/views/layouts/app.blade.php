@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/daisyui5.css') }}" rel="stylesheet" type="text/css"/>
     <title>@yield('title')</title>
+    <link href="{{ asset('css/daisyui5.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{asset('js/tailwindcss4.js')}}"></script>
 </head>
 @auth
 @php
@@ -20,7 +21,6 @@
         
             @yield('content')
     </main>
-        <script src="{{asset('js/tailwindcss4.js')}}"></script>
         <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
         <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
         @yield('js')
