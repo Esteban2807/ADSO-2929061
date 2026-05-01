@@ -8,7 +8,7 @@
     <td>{{ $user->fullname }}</td>
     <td>{{ $user->email }}</td>
     <td>
-        @if ($user->role == 'admin')
+        @if ($user->role == 'Admin')
         <span class="badge badge-outline badge-accent">{{ $user->role }}</span>
         @else
         <span class="badge badge-outline badge-info">{{ $user->role }}</span>

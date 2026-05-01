@@ -1,10 +1,10 @@
 @extends('layouts.app')
-
+ 
 @section('title', 'Larapets: Show Adoption')
-
+ 
 @section('content')
-@include('partials.navbar')
-<h1 class="text-4xl text-white flex gap-2 items-center justify-center pb-4 border-b-2 border-neutral-50 mb-10">
+    @include('partials.navbar')
+    <h1 class="mt-6 text-4xl text-white flex gap-2 items-center justify-center pb-4 border-b-2 border-neutral-50 mb-10">
         <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="currentColor" viewBox="0 0 256 256">
             <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
         </svg>
@@ -20,84 +20,133 @@
                     </svg>
                     Dashboard
                 </a>
-            </li>
-            <li>
+                </li>
+                <li>
                 <a href="{{ url('adoptions') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path>
                     </svg>
                     Adoption Module
                 </a>
-            </li>
-            <li>
-                <span class="inline-flex items-center gap-2 text-white font-bold">
+                </li>
+                <li>
+                <span class="inline-flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
                     </svg>
                     Show Adoption
                 </span>
-            </li>
-        </ul>
-    </div>
-    {{-- Card --}}
-    <div class="bg-[#0009] p-10 rounded-sm">
-        <div class="flex flex-col md:flex-row gap-10 justify-center">
-            {{-- User Data --}}
-            <div class="flex flex-col items-center">
-                <h2 class="text-2xl text-white mb-4">Adopter User</h2>
+                </li>
+            </ul>
+        </div>
+        {{-- Card --}}
+        <div class="bg-[#0009] p-10 rounded-sm flex flex-col items-center">
+            {{-- Image --}}
+            <div class="avatar-group -space-x-6">
                 <div class="avatar">
-                    <div class="mask mask-squircle w-48">
-                        <img src="{{ asset($adoption->user->photo) }}" />
+                    <div class="w-36">
+                    <img src="{{ asset($adoption->user->photo) }}" />
                     </div>
                 </div>
-                <ul class="list bg-[#0006] mt-4 text-white rounded-box shadow-md w-full">
+                <div class="avatar">
+                    <div class="w-36">
+                    <img src="{{ asset($adoption->pet->image) }}" />
+                    </div>
+                </div>
+            </div>
+            {{-- Data --}}
+            <div class="flex gap-2 flex-col md:flex-row">
+                <ul class="list bg-[#0006] mt-4 text-white rounded-box shadow-md w-64">
                     <li class="list-row">
-                        <span class="text-[#fff9] font-semibold">Name:</span> <span>{{ $adoption->user->fullname }}</span>
+                        <span class="text-[#fff9] font-semibold">Document:</span> <span>{{ $adoption->user->document }}</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">FullName:</span> <span>{{ $adoption->user->fullname }}</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Gender:</span> <span>{{ $adoption->user->gender }}</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Age:</span> <span>{{ Carbon\Carbon::parse($adoption->user->birthdate)->age }} years old</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Phone:</span> <span>{{ $adoption->user->phone }}</span>
                     </li>
                     <li class="list-row">
                         <span class="text-[#fff9] font-semibold">Email:</span> <span>{{ $adoption->user->email }}</span>
                     </li>
                     <li class="list-row">
-                        <span class="text-[#fff9] font-semibold">Phone:</span> <span>{{ $adoption->user->phone }}</span>
+                        <span class="text-[#fff9] font-semibold">Active:</span>
+                        <span>
+                            @if ($adoption->user->active == 1)
+                                <div class="badge badge-outline badge-success">Active</div>
+                            @else
+                                <div class="badge badge-outline badge-error">Inactive</div>
+                            @endif
+                        </span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Role:</span>
+                        <span>
+                            @if ($adoption->user->role == 'Administrator')
+                                <div class="badge badge-outline badge-warning">Admin</div>
+                            @else
+                                <div class="badge badge-outline badge-default">Customer</div>
+                            @endif
+                        </span>
                     </li>
                 </ul>
-            </div>
-            
-            {{-- Pet Data --}}
-            <div class="flex flex-col items-center">
-                <h2 class="text-2xl text-white mb-4">Adopted Pet</h2>
-                <div class="avatar">
-                    <div class="mask mask-squircle w-48">
-                        <img src="{{ asset($adoption->pet->image) }}" class="object-cover" />
-                    </div>
-                </div>
-                <ul class="list bg-[#0006] mt-4 text-white rounded-box shadow-md w-full">
+                <ul class="list bg-[#0006] mt-4 text-white rounded-box shadow-md w-64">
                     <li class="list-row">
                         <span class="text-[#fff9] font-semibold">Name:</span> <span>{{ $adoption->pet->name }}</span>
                     </li>
                     <li class="list-row">
-                        <span class="text-[#fff9] font-semibold">Kind:</span> <span>{{ $adoption->pet->kind }}</span>
+                        <span class="text-[#fff9] font-semibold">Kind:</span> <span>
+                            @if($adoption->pet->kind == 'Dog')
+                                <div class="badge badge-outline badge-info">Dog</div>
+                            @elseif ($adoption->pet->kind == 'Cat')
+                                <div class="badge badge-outline badge-secondary">Cat</div>
+                            @elseif ($adoption->pet->kind == 'Pig')
+                                <div class="badge badge-outline badge-success">Pig</div>
+                            @elseif ($adoption->pet->kind == 'Bird')
+                                <div class="badge badge-outline badge-warning">Bird</div>
+                            @endif
+                        </span>
                     </li>
                     <li class="list-row">
                         <span class="text-[#fff9] font-semibold">Breed:</span> <span>{{ $adoption->pet->breed }}</span>
                     </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Weight:</span> <span>{{ $adoption->pet->weight }} lbs</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Age:</span> <span>{{ $adoption->pet->age }} years old</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Location:</span>
+                        <span>{{ $adoption->pet->location }}</span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Active:</span>
+                        <span>
+                            @if($adoption->pet->active == 1)
+                                <div class="badge badge-outline badge-success">Yes</div>
+                            @else
+                                <div class="badge badge-outline badge-error">No</div>
+                            @endif
+                        </span>
+                    </li>
+                    <li class="list-row">
+                        <span class="text-[#fff9] font-semibold">Status:</span>
+                        <span>
+                            @if($adoption->pet->status == 0)
+                                <div class="badge badge-outline badge-success">Avaliable</div>
+                            @else
+                                <div class="badge badge-outline badge-error">Adopted</div>
+                            @endif
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>
-        
-        {{-- Adoption Data --}}
-        <div class="flex justify-center mt-10">
-            <ul class="list bg-[#0006] text-white rounded-box shadow-md w-full md:w-96">
-                <li class="list-row">
-                    <span class="text-[#fff9] font-semibold text-center w-full">Adoption Details</span>
-                </li>
-                <li class="list-row">
-                    <span class="text-[#fff9] font-semibold">Date:</span> <span>{{ $adoption->created_at->format('l, F j, Y') }}</span>
-                </li>
-                <li class="list-row">
-                    <span class="text-[#fff9] font-semibold">Time:</span> <span>{{ $adoption->created_at->format('g:i A') }}</span>
-                </li>
-            </ul>
-        </div>
-    </div>
 @endsection

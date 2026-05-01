@@ -22,9 +22,12 @@ class AdoptionsExport implements FromView, WithColumnWidths, WithStyles
     {
         return [
             'A' => 5,
-            'B' => 30,  
-            'C' => 30,            
-            'D' => 20,            
+            'B' => 15,
+            'C' => 30,
+            'D' => 15,
+            'E' => 20,
+            'F' => 20,
+            'G' => 25,
         ];
     }
 

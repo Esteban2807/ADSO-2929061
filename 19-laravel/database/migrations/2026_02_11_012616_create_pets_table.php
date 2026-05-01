@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image')->default('no-image.png');
+            $table->string('image')->default('images/no-photo.jpg');
             $table->string('kind');
             $table->double('weight');
             $table->integer('age');

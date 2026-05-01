@@ -33,7 +33,9 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>User Photo</th>
                 <th>User Full Name</th>
+                <th>Pet Image</th>
                 <th>Pet Name</th>
                 <th>Pet Kind</th>
                 <th>Adoption Date</th>
@@ -43,7 +45,19 @@
             @foreach ($adoptions as $adoption)
             <tr>
                 <td>{{ $adoption->id }}</td>
+                <td>
+                    @php($userPhotoPath = public_path($adoption->user->photo))
+                    @if ($adoption->user->photo && file_exists($userPhotoPath))
+                        <img src="file://{{ $userPhotoPath }}" style="width: 40px; height: 40px; border-radius: 9999px; object-fit: cover;" />
+                    @endif
+                </td>
                 <td>{{ $adoption->user->fullname }}</td>
+                <td>
+                    @php($petImagePath = public_path($adoption->pet->image))
+                    @if ($adoption->pet->image && file_exists($petImagePath))
+                        <img src="file://{{ $petImagePath }}" style="width: 40px; height: 40px; border-radius: 9999px; object-fit: cover;" />
+                    @endif
+                </td>
                 <td>{{ $adoption->pet->name }}</td>
                 <td>{{ $adoption->pet->kind }}</td>
                 <td>{{ $adoption->created_at->format('Y-m-d H:i:s') }}</td>
