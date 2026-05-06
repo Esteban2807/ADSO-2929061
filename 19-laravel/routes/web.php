@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::group(['middleware' => 'Admin', 'auth'],function () {
+Route::group(['middleware' => 'Admin', 'auth'], function () {
     Route::resources([
         'users' => UserController::class,
         'pets' => PetController::class,
@@ -39,6 +40,22 @@ Route::group(['middleware' => 'Admin', 'auth'],function () {
     Route::post('search/pets', [PetController::class, 'search']);
     Route::post('search/adoptions', [AdoptionController::class, 'search']);
 });
+Route::middleware('auth')->group(function () {
+    Route::get('myprofile/', [CustomerController::class, 'myprofile']);
+    Route::put('myprofile/{id}', [CustomerController::class, 'updatemyprofile']);
+
+    Route::get('myadoptions/', [CustomerController::class, 'myadoptions']);
+    Route::get('myadoption/{id}', [CustomerController::class, 'showmyadoption']);
+
+    Route::get('listpets/', [CustomerController::class, 'listpets']);
+    Route::get('showpet/{id}', [CustomerController::class, 'showpet']);
+
+    Route::post('makeadoption/', [CustomerController::class, 'makeadoption']);
+    Route::post('search/myadoptions', [CustomerController::class, 'search']);
+});
+Route::group(['middleware' => 'Customer', 'auth'], function () {
+    // Rutas del cliente
+});
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
