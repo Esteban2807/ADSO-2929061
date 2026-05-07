@@ -135,6 +135,12 @@ class UserController extends Controller
     {
         return Excel::download(new UsersExport(), 'allusers.xlsx');
     }
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new UsersImport, $file);
+        return redirect('users')->with('message','The Users were imported successfully');
+    }
     public function search(Request $request){
         $users = User::names($request->q)->orderBy('id','desc')->paginate(12);
         return view('users.search')->with('users',$users);

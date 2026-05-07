@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Adoption;
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,5 +62,43 @@ class CustomerController extends Controller
         $adoptions = Adoption::names($request->q)->with(['user', 'pet'])->orderBy('id','desc')->paginate(12);
         return view('customer.search')->with('adoptions',$adoptions);
     }
-}
+    public function searchpets(Request $request){
+        $pets = Pet::names($request->q)->orderBy('name','asc')->paginate(12);
+        return view('customer.searchpets')->with('pets',$pets);
+    }
+    public function listpets() {
+        $pets = Pet::where('status',0)->orderBy('name','asc')->paginate(12);
+        // return dd($pets->toArray());
+        return view('customer.listpets')->with('pets',$pets);
+    }
+    public function showpet(Request $request) {
+        $pet = Pet::find($request->id);
+        //return dd($pet->toArray());
+        return view('customer.showpet')->with('pet', $pet);
+    }
+    public function makeadoption(Request $request)
+    {
+        $pet_id = $request->pet_id;
 
+        $userId = Auth::user()->id;
+        $adoptionsCount = Adoption::where('user_id', $userId)->count();
+
+        if ($adoptionsCount >= 3) {
+            return redirect('listpets')->with('error', 'You already have 3 adoptions. You cannot adopt more pets.');
+        }
+
+        $adoption = new Adoption;
+        $adoption->user_id = $userId;
+        $adoption->pet_id = $pet_id;
+
+        if ($adoption->save()) {
+            $pet = Pet::find($pet_id);
+            $pet->status = 1;
+            $pet->save();
+
+            return redirect('listpets')->with('message', 'The pet was adopted successfully.');
+        }
+
+        return redirect('listpets')->with('error', 'The adoption could not be saved. Please try again.');
+    }
+}

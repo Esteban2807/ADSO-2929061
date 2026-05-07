@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('makeadoption/', [CustomerController::class, 'makeadoption']);
     Route::post('search/myadoptions', [CustomerController::class, 'search']);
+
+    Route::post('search/listpets', [CustomerController::class, 'searchpets']);
 });
 Route::group(['middleware' => 'Customer', 'auth'], function () {
     // Rutas del cliente
