@@ -25,7 +25,7 @@ class PetController extends Controller
             ], 404);
         }
         return response()->json([
-            'message' => 'Mostrando mascota #' . $request->id,
+            'message' => 'Mostrando información de ' . $pet->name,
             'pet' => $pet
         ], 200);
     }
@@ -58,7 +58,8 @@ class PetController extends Controller
 
                 if ($pet->save()) {
                     return response()->json([
-                        'message' => 'Mascota creada exitosamente!'
+                        'message' => $pet->name . ' creada exitosamente!',
+                        'pet' => $pet
                     ], 201);
                 }
             } else {
@@ -79,36 +80,24 @@ class PetController extends Controller
                     'message' => 'Mascota no encontrada'
                 ], 404); 
             }
-            $validation = $request->validate([
-                'name' => ['required', 'string'],
-                'kind' => ['required', 'string'],
-                'weight' => ['required', 'numeric'],
-                'age' => ['required', 'numeric'],
-                'breed' => ['required', 'string'],
-                'location' => ['required', 'string'],
-                'description' => ['required', 'string']
+           $request->validate([
+                'name' => ['sometimes','required', 'string'],
+                'kind' => ['sometimes','required', 'string'],
+                'weight' => ['sometimes','required', 'numeric'],
+                'age' => ['sometimes','required', 'numeric'],
+                'breed' => ['sometimes','required', 'string'],
+                'location' => ['sometimes','required', 'string'],
+                'description' => ['sometimes','required', 'string']
             ]);
-            if ($validation) {
-                $pet->update([
-                    'name' => $request->name,
-                    'kind' => $request->kind,
-                    'weight' => $request->weight,
-                    'age' => $request->age,
-                    'breed' => $request->breed,
-                    'location' => $request->location,
-                    'description' => $request->description,
-                    'active' => true,
-                    'status' => true
-                ]);
+                $pet->update(
+                    $request->all()
+                );
                 return response()->json([
-                    'message' => 'Mascota actualizada exitosamente!'
+                    'message' => $pet->name . ' actualizada exitosamente!',
+                    'pet' => $pet
                 ], 200);
-            } else {
-               return response()->json([
-                    'message' => 'Faltan campos por agregar!'
-                ], 401); 
             }
-        } catch (\Exception $e) {
+        catch (\Exception $e) {
             return response()->json(['errors' => $e->getMessage()], 400);
         }
     }
@@ -123,7 +112,8 @@ class PetController extends Controller
             }
             if ($pet->delete()) {
                 return response()->json([
-                    'message' => 'Mascota eliminada exitosamente!'
+                    'message' => $pet->name . ' ha sido eliminada exitosamente!',
+                    'pet' => $pet
                 ], 200);
             }
         } catch (\Exception $e) {

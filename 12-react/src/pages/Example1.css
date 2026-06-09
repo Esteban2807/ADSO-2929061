@@ -1,0 +1,31 @@
+.pokemon-grid {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pokemon-card {
+  min-width: 220px;
+  padding: 1.5rem;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+}
+
+.pokemon-card h2 {
+  margin-bottom: 0.75rem;
+}
+
+.fire {
+  background: linear-gradient(135deg, #ff7b54, #ff4d4d);
+}
+
+.water {
+  background: linear-gradient(135deg, #4facfe, #0066ff);
+}
