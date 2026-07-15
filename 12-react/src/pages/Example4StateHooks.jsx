@@ -1,5 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { BtnBack } from "../components/BtnBack";
+
+const pokemonList = [
+  {
+    name: "Pikachu",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+  },
+  {
+    name: "Charmander",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+  },
+  {
+    name: "Squirtle",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+  },
+];
+
 function Example4StateHooks() {
   const [caughtPokemon, setCaughtPokemon] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -8,22 +24,7 @@ function Example4StateHooks() {
 
   const hasMounted = useRef(false);
 
-  const pokemonList = [
-    {
-      name: "Pikachu",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-    },
-    {
-      name: "Charmander",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-    },
-    {
-      name: "Squirtle",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
-    },
-  ];
-
-  const catchPokemon = () => {
+  const catchPokemon = useCallback(() => {
     setLoading(true);
 
     setTimeout(() => {
@@ -34,14 +35,14 @@ function Example4StateHooks() {
       setCatchCounter((prev) => prev + 1);
       setHistory((prev) => [newPokemon, ...prev]);
       setLoading(false);
-    }, 2000);
-  };
+    }, 1000);
+  }, []);
   useEffect(() => {
     if (!hasMounted.current) {
       catchPokemon();
       hasMounted.current = true;
     }
-  }, []);
+  }, [catchPokemon]);
   const styles = {
     section: {
       marginTop: "2rem",
